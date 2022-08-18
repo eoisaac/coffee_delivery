@@ -11,9 +11,23 @@ export const GlobalStyle = createGlobalStyle`
 	font-family: 'Roboto', sans-serif;
 	/* font-family: 'Baloo 2', cursive; */
 	font-weight: 400;
-	font-size: 62.5%;
+	font-size: 1rem;
 	-webkit-font-smoothing: antialiased;
 	color: ${(props) => props.theme['base-text']};
 	background-color: ${(props) => props.theme.background};
  }
+
+ ::selection {
+		color: ${(props) => props.theme.white};
+    background-color: ${(props) => props.theme.purple};
+  }
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background-color: ${(props) => props.theme.background};
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: ${(props) => props.theme['base-card']};
+  }
 `

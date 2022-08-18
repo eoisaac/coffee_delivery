@@ -13,6 +13,8 @@ export const Header = () => {
           <SrOnlyHeaderTitle>Coffee Delivery</SrOnlyHeaderTitle>
         </Link>
       </h2>
+
+      <button>Ouro Branco, MG</button>
     </HeaderContainer>
   )
 }

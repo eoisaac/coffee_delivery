@@ -7,7 +7,7 @@ export const LayoutContainer = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
   overflow: hidden;
   background-color: ${(props) => props.theme.background};
 `
