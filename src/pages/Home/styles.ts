@@ -8,30 +8,26 @@ export const HomeContainer = styled.main`
   overflow-y: auto;
 `
 
-export const HomeBanner = styled.div`
+export const IntroContainer = styled.section`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 0;
 
   img {
-    display: none;
     width: clamp(14rem, 35vw, 476px);
   }
 
   @media (min-width: 768px) {
+    padding: 5.75rem 0;
     flex-direction: row;
     align-items: flex-start;
-
-    img {
-      display: block;
-    }
   }
 `
 
-export const BannerContent = styled.div`
+export const IntroContent = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -48,6 +44,7 @@ export const ContentTitle = styled.div`
     font-family: 'Baloo 2', cursive;
     font-weight: 800;
     line-height: 130%;
+    color: ${(props) => props.theme['base-title']};
   }
 
   strong {
