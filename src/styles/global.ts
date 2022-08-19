@@ -22,12 +22,12 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.purple};
   }
   ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    width: 2px;
+    height: 2px;
     background-color: ${(props) => props.theme.background};
   }
   ::-webkit-scrollbar-thumb {
-    border-radius: 8px;
+		border-radius: 8px;
     background-color: ${(props) => props.theme['base-card']};
   }
 `

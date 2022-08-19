@@ -93,3 +93,23 @@ export const Item = styled.li<ItemsProps>`
       props.theme[ITEM_BG_COLORS[props.itemBGColor]]};
   }
 `
+export const CoffeesContainer = styled.section`
+  h1 {
+    margin-bottom: 3.375rem;
+    font-size: 2rem;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    line-height: 130%;
+    color: ${(props) => props.theme['base-subtitle']};
+  }
+`
+
+export const CoffeesGrid = styled.ul`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 256px));
+  justify-content: center;
+  justify-items: center;
+  gap: 2.5rem 2rem;
+  list-style: none;
+`
