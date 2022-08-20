@@ -1,5 +1,5 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import {
   ButtonBadge,
   CartButton,
@@ -28,11 +28,15 @@ export const Header = () => {
           <MapPin size={22} weight="fill" /> Ouro Branco, MG
         </CitySelect>
 
-        <CartButton>
-          {amount && <ButtonBadge>{amount}</ButtonBadge>}
+        <nav>
+          <NavLink to="/checkout">
+            <CartButton>
+              {amount && <ButtonBadge>{amount}</ButtonBadge>}
 
-          <ShoppingCart size={22} weight="fill" />
-        </CartButton>
+              <ShoppingCart size={22} weight="fill" />
+            </CartButton>
+          </NavLink>
+        </nav>
       </div>
     </HeaderContainer>
   )
