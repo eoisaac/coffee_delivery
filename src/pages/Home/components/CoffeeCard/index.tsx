@@ -1,13 +1,14 @@
 import {
   BuyButtons,
   BuyContainer,
+  CartButton,
   CoffeeContainer,
   CoffeePrice,
   TagWrapper,
 } from './styles'
 import { CoffeeDrink } from '../../../../data/coffees_data'
 import { ShoppingCart } from 'phosphor-react'
-import { Button } from '../../../../components/Button'
+import { Counter } from '../../../../components/Counter'
 
 export const CoffeeCard = ({
   id,
@@ -23,7 +24,7 @@ export const CoffeeCard = ({
 
       <TagWrapper>
         {tags.map((tag) => (
-          <span key={`${id}_${name}`}>{tag}</span>
+          <span key={`${id}_${tag}`}>{tag}</span>
         ))}
       </TagWrapper>
 
@@ -32,14 +33,14 @@ export const CoffeeCard = ({
 
       <BuyContainer>
         <CoffeePrice>
-          R$ <span>{price}</span>
+          R$ <span>{price.toFixed(2)}</span>
         </CoffeePrice>
 
         <BuyButtons>
-          <button>- 1 +</button>
-          <Button>
+          <Counter />
+          <CartButton>
             <ShoppingCart size={22} weight="fill" />
-          </Button>
+          </CartButton>
         </BuyButtons>
       </BuyContainer>
     </CoffeeContainer>

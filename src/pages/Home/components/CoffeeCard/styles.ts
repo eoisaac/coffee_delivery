@@ -72,12 +72,28 @@ export const CoffeePrice = styled.div`
 `
 
 export const BuyButtons = styled.div`
-  button:last-child {
-    background-color: ${(props) => props.theme['purple-dark']};
-    color: ${(props) => props.theme['purple-light']};
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+`
+export const CartButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  padding: 0.5rem;
+  cursor: pointer;
+  line-height: 0;
+  font-size: 0.875rem;
+  outline: 0;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  border-radius: 6px;
+  background-color: ${(props) => props.theme['purple-dark']};
+  color: ${(props) => props.theme['purple-light']};
 
-    &:hover {
-      background-color: ${(props) => props.theme.purple};
-    }
+  &:hover {
+    background-color: ${(props) => props.theme.purple};
   }
 `

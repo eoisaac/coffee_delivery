@@ -14,26 +14,6 @@ export const HeaderContainer = styled.header`
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-
-    button:first-child {
-      background-color: ${(props) => props.theme['purple-light']};
-      color: ${(props) => props.theme['purple-dark']};
-
-      &:hover {
-        background-color: ${(props) => props.theme['purple-dark']};
-        color: ${(props) => props.theme['purple-light']};
-      }
-    }
-
-    button:last-child {
-      background-color: ${(props) => props.theme['yellow-light']};
-      color: ${(props) => props.theme['yellow-dark']};
-
-      &:hover {
-        background-color: ${(props) => props.theme['yellow-dark']};
-        color: ${(props) => props.theme['yellow-light']};
-      }
-    }
   }
 `
 
@@ -47,4 +27,52 @@ export const SrOnlyHeaderTitle = styled.span`
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+`
+export const CartButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: ${(props) => props.theme['yellow-dark']};
+  line-height: 0;
+  font-size: 0.875rem;
+  outline: 0;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  border-radius: 6px;
+  background-color: ${(props) => props.theme['yellow-light']};
+
+  &:hover {
+    color: ${(props) => props.theme['yellow-light']};
+    background-color: ${(props) => props.theme['yellow-dark']};
+  }
+`
+export const ButtonBadge = styled.div`
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: -8px -8px auto auto;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 0;
+  color: ${(props) => props.theme.white};
+  border-radius: 50%;
+  background-color: ${(props) => props.theme['yellow-dark']};
+`
+
+export const CitySelect = styled(CartButton)`
+  color: ${(props) => props.theme['purple-dark']};
+  background-color: ${(props) => props.theme['purple-light']};
+
+  &:hover {
+    color: ${(props) => props.theme['purple-light']};
+    background-color: ${(props) => props.theme['purple-dark']};
+  }
 `

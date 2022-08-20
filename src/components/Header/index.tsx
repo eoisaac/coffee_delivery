@@ -1,9 +1,16 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { Link } from 'react-router-dom'
-import { Button } from '../Button'
-import { HeaderContainer, SrOnlyHeaderTitle } from './styles'
+import {
+  ButtonBadge,
+  CartButton,
+  CitySelect,
+  HeaderContainer,
+  SrOnlyHeaderTitle,
+} from './styles'
 
 export const Header = () => {
+  const amount = 3
+
   return (
     <HeaderContainer>
       <h2>
@@ -17,12 +24,15 @@ export const Header = () => {
       </h2>
 
       <div>
-        <Button>
+        <CitySelect>
           <MapPin size={22} weight="fill" /> Ouro Branco, MG
-        </Button>
-        <Button>
+        </CitySelect>
+
+        <CartButton>
+          {amount && <ButtonBadge>{amount}</ButtonBadge>}
+
           <ShoppingCart size={22} weight="fill" />
-        </Button>
+        </CartButton>
       </div>
     </HeaderContainer>
   )
