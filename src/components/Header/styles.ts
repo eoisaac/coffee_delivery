@@ -9,6 +9,32 @@ export const HeaderContainer = styled.header`
   margin: 0 auto;
   padding: 2rem 0;
   background-color: ${(props) => props.theme.background};
+
+  div {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    button:first-child {
+      background-color: ${(props) => props.theme['purple-light']};
+      color: ${(props) => props.theme['purple-dark']};
+
+      &:hover {
+        background-color: ${(props) => props.theme['purple-dark']};
+        color: ${(props) => props.theme['purple-light']};
+      }
+    }
+
+    button:last-child {
+      background-color: ${(props) => props.theme['yellow-light']};
+      color: ${(props) => props.theme['yellow-dark']};
+
+      &:hover {
+        background-color: ${(props) => props.theme['yellow-dark']};
+        color: ${(props) => props.theme['yellow-light']};
+      }
+    }
+  }
 `
 
 export const SrOnlyHeaderTitle = styled.span`

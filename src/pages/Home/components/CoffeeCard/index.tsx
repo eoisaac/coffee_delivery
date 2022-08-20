@@ -7,6 +7,7 @@ import {
 } from './styles'
 import { CoffeeDrink } from '../../../../data/coffees_data'
 import { ShoppingCart } from 'phosphor-react'
+import { Button } from '../../../../components/Button'
 
 export const CoffeeCard = ({
   id,
@@ -31,15 +32,14 @@ export const CoffeeCard = ({
 
       <BuyContainer>
         <CoffeePrice>
-          R$
-          <span>{price}</span>
+          R$ <span>{price}</span>
         </CoffeePrice>
 
         <BuyButtons>
           <button>- 1 +</button>
-          <button>
-            <ShoppingCart size={16} weight="fill" />
-          </button>
+          <Button>
+            <ShoppingCart size={22} weight="fill" />
+          </Button>
         </BuyButtons>
       </BuyContainer>
     </CoffeeContainer>

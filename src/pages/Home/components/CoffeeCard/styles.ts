@@ -60,8 +60,24 @@ export const BuyContainer = styled.div`
 `
 
 export const CoffeePrice = styled.div`
+  font-size: 0.875rem;
+  line-height: 130%;
+  color: ${(props) => props.theme['base-text']};
+
   span {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.5rem;
+    font-weight: 800;
   }
 `
 
-export const BuyButtons = styled.div``
+export const BuyButtons = styled.div`
+  button:last-child {
+    background-color: ${(props) => props.theme['purple-dark']};
+    color: ${(props) => props.theme['purple-light']};
+
+    &:hover {
+      background-color: ${(props) => props.theme.purple};
+    }
+  }
+`
