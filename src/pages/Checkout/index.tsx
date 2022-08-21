@@ -1,4 +1,11 @@
-import { Coffee, CurrencyDollar, MapPin } from 'phosphor-react'
+import {
+  Bank,
+  Coffee,
+  CreditCard,
+  CurrencyDollar,
+  MapPin,
+  Money,
+} from 'phosphor-react'
 import {
   CheckoutContainer,
   CoffeeOrderContainer,
@@ -9,16 +16,10 @@ import {
   Input,
   InputRow,
   InputWrap,
+  PaymentMethod,
+  PaymentMethodsContainer,
 } from './styles'
 // import { useForm } from 'react-hook-form'
-// import {
-//   Bank,
-//   Coffee,
-//   CreditCard,
-//   CurrencyDollar,
-//   MapPin,
-//   Money,
-// } from 'phosphor-react'
 
 export const Checkout = () => {
   // const { register, handleSubmit } = useForm()
@@ -114,6 +115,51 @@ export const Checkout = () => {
                 </span>
               </div>
             </Header>
+
+            <PaymentMethodsContainer>
+              <PaymentMethod htmlFor="credit">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  id="credit"
+                  value="credit"
+                />
+                <div>
+                  <span>
+                    <CreditCard size={18} />
+                  </span>
+                  Cartão de Crédito
+                </div>
+              </PaymentMethod>
+              <PaymentMethod htmlFor="debit">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  id="debit"
+                  value="debit"
+                />
+                <div>
+                  <span>
+                    <Bank size={18} />
+                  </span>
+                  Cartão de Débito
+                </div>
+              </PaymentMethod>
+              <PaymentMethod htmlFor="money">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  id="money"
+                  value="money"
+                />
+                <div>
+                  <span>
+                    <Money size={18} />
+                  </span>
+                  Dinheiro
+                </div>
+              </PaymentMethod>
+            </PaymentMethodsContainer>
           </FieldsetContainer>
         </DeliveryContainer>
 

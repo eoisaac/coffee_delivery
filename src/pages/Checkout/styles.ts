@@ -19,18 +19,19 @@ export const CheckoutContainer = styled.main`
 export const FormContainer = styled.form`
   /* flex: 1; */
   display: flex;
+  /* flex-wrap: wrap; */
   gap: 2rem;
-
-  /* @media (min-width: ) { flex-wrap: wrap; } */
 `
 
 export const FieldsetContainer = styled.fieldset`
   all: unset;
-  padding: 2.5rem;
+  padding: 1rem;
   border-radius: 6px;
   background-color: ${(props) => props.theme['base-card']};
 
-  /* @media (min-width: ) { padding: 1rem } */
+  @media (min-width: 768px) {
+    padding: 2.5rem;
+  }
 `
 
 const ICON_COLOR = {
@@ -47,11 +48,13 @@ export const Header = styled.div<HeaderProps>`
   display: inline-flex;
   align-items: flex-start;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   line-height: 130%;
   color: ${(props) => props.theme[ICON_COLOR[props.iconColor]]};
 
-  /* @media (min-width: ) { margin-bottom: 1rem } */
+  @media (min-width: 768px) {
+    margin-bottom: 2rem;
+  }
 
   legend {
     font-family: 'Baloo 2', cursive;
@@ -77,6 +80,51 @@ export const CoffeeOrderContainer = styled(FieldsetContainer)`
   border-radius: 6px 44px;
 `
 
+export const PaymentMethodsContainer = styled.div`
+  width: 100%;
+  display: inline-flex;
+  gap: 0.75rem;
+  align-items: center;
+`
+
+export const PaymentMethod = styled.label`
+  position: relative;
+  cursor: pointer;
+
+  input {
+    all: unset;
+    display: none;
+  }
+
+  input + div {
+    display: inline-flex;
+    gap: 0.75rem;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 1rem;
+    line-height: 0;
+    color: ${(props) => props.theme['base-text']};
+    border-radius: 6px;
+    border: solid 1px transparent;
+    background-color: ${(props) => props.theme['base-button']};
+
+    span {
+      color: ${(props) => props.theme.purple};
+    }
+
+    &:hover {
+      color: ${(props) => props.theme['base-subtitle']};
+      background-color: ${(props) => props.theme['base-hover']};
+    }
+  }
+
+  input:checked + div {
+    border-color: ${(props) => props.theme.purple};
+    background-color: ${(props) => props.theme['purple-light']};
+  }
+`
+
 export const InputWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -90,12 +138,8 @@ export const InputRow = styled.span`
 `
 
 export const Input = styled.div`
-  &:nth-child(2) {
-    flex: 1.4;
-  }
-
   &:nth-child(3) {
-    flex: 0.2;
+    flex: 0.5;
   }
 
   &:nth-child(even) {
