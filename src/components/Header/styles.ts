@@ -68,11 +68,16 @@ export const ButtonBadge = styled.div`
 `
 
 export const CitySelect = styled(CartButton)`
+  display: none;
   color: ${(props) => props.theme['purple-dark']};
   background-color: ${(props) => props.theme['purple-light']};
 
   &:hover {
     color: ${(props) => props.theme['purple-light']};
     background-color: ${(props) => props.theme['purple-dark']};
+  }
+
+  @media (min-width: 480px) {
+    display: inline-flex;
   }
 `

@@ -9,7 +9,6 @@ export const GlobalStyle = createGlobalStyle`
 
  body {
 	font-family: 'Roboto', sans-serif;
-	/* font-family: 'Baloo 2', cursive; */
 	font-weight: 400;
 	font-size: 1rem;
 	-webkit-font-smoothing: antialiased;
@@ -24,10 +23,10 @@ export const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar {
     width: 2px;
     height: 2px;
-    background-color: ${(props) => props.theme.background};
+    /* background-color: ${(props) => props.theme.background}; */
   }
   ::-webkit-scrollbar-thumb {
 		border-radius: 8px;
-    background-color: ${(props) => props.theme['base-card']};
+    /* background-color: ${(props) => props.theme['base-card']}; */
   }
 `

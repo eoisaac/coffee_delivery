@@ -8,7 +8,7 @@ export const CheckoutContainer = styled.main`
 
   h1 {
     margin-bottom: 1rem;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
     font-family: 'Baloo 2', cursive;
     font-weight: 800;
     line-height: 130%;
@@ -19,8 +19,13 @@ export const CheckoutContainer = styled.main`
 export const FormContainer = styled.form`
   /* flex: 1; */
   display: flex;
+  flex-direction: column;
   /* flex-wrap: wrap; */
   gap: 2rem;
+
+  @media (min-width: 868px) {
+    flex-direction: row;
+  }
 `
 
 export const FieldsetContainer = styled.fieldset`
@@ -69,22 +74,82 @@ export const Header = styled.div<HeaderProps>`
 `
 
 export const DeliveryContainer = styled.div`
-  width: 65%;
+  /* width: 65%; */
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 `
 
 export const CoffeeOrderContainer = styled(FieldsetContainer)`
-  width: 35%;
-  border-radius: 6px 44px;
+  /* width: 35%; */
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+
+  @media (min-width: 868px) {
+    border-radius: 6px 44px;
+  }
+`
+
+export const OrderList = styled.ul`
+  flex: 1;
+  max-height: 240px;
+  overflow-y: auto;
+  list-style: none;
+  background-color: beige;
+`
+
+export const OrderResume = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+
+  div {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: ${(props) => props.theme['base-text']};
+
+    &:last-child {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.25rem;
+    }
+  }
+`
+
+export const OrderFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  button {
+    padding: 1rem;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 130%;
+    color: ${(props) => props.theme.white};
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    background-color: ${(props) => props.theme.yellow};
+
+    &:hover {
+      background-color: ${(props) => props.theme['yellow-dark']};
+    }
+  }
 `
 
 export const PaymentMethodsContainer = styled.div`
-  width: 100%;
   display: inline-flex;
-  gap: 0.75rem;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 0.75rem;
 `
 
 export const PaymentMethod = styled.label`
@@ -97,14 +162,16 @@ export const PaymentMethod = styled.label`
   }
 
   input + div {
+    width: 100%;
+    min-width: 180px;
     display: inline-flex;
     gap: 0.75rem;
     align-items: center;
     text-transform: uppercase;
     font-size: 0.75rem;
     padding: 1rem;
-    line-height: 0;
     color: ${(props) => props.theme['base-text']};
+    transition: all 0.1s ease-in-out;
     border-radius: 6px;
     border: solid 1px transparent;
     background-color: ${(props) => props.theme['base-button']};
@@ -126,12 +193,14 @@ export const PaymentMethod = styled.label`
 `
 
 export const InputWrap = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 `
 
 export const InputRow = styled.span`
+  width: 100%;
   display: inline-flex;
   flex-wrap: wrap;
   gap: 1rem;

@@ -6,6 +6,7 @@ import {
   MapPin,
   Money,
 } from 'phosphor-react'
+import { OrderCoffee } from './components/OrderCoffee'
 import {
   CheckoutContainer,
   CoffeeOrderContainer,
@@ -16,6 +17,9 @@ import {
   Input,
   InputRow,
   InputWrap,
+  OrderFooter,
+  OrderList,
+  OrderResume,
   PaymentMethod,
   PaymentMethodsContainer,
 } from './styles'
@@ -171,6 +175,35 @@ export const Checkout = () => {
               <span>Aqui estão todos os cafés do seu pedido</span>
             </div>
           </Header>
+
+          <OrderList>
+            <OrderCoffee />
+            <OrderCoffee />
+            <OrderCoffee />
+            <OrderCoffee />
+            <OrderCoffee />
+            <OrderCoffee />
+            <OrderCoffee />
+          </OrderList>
+
+          <OrderFooter>
+            <OrderResume>
+              <div>
+                <span>Total de itens</span>
+                <span>R$ 29,70</span>
+              </div>
+              <div>
+                <span>Entrega</span>
+                <span>R$ 3,50</span>
+              </div>
+              <div>
+                <span>Total</span>
+                <span>R$ 33,20</span>
+              </div>
+            </OrderResume>
+
+            <button type="submit">Confirmar Pedido</button>
+          </OrderFooter>
         </CoffeeOrderContainer>
       </FormContainer>
     </CheckoutContainer>
