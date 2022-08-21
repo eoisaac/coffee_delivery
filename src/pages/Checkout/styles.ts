@@ -146,13 +146,14 @@ export const OrderFooter = styled.div`
 `
 
 export const PaymentMethodsContainer = styled.div`
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem;
 `
 
 export const PaymentMethod = styled.label`
+  flex: 1;
   position: relative;
   cursor: pointer;
 
