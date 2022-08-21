@@ -8,11 +8,12 @@ export const GlobalStyle = createGlobalStyle`
  }
 
  body {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 400;
-	font-size: 1rem;
-	-webkit-font-smoothing: antialiased;
-	color: ${(props) => props.theme['base-text']};
+	 font-family: 'Roboto', sans-serif;
+	 font-weight: 400;
+	 font-size: 1rem;
+	 -webkit-font-smoothing: antialiased;
+	 overflow: hidden;
+	 color: ${(props) => props.theme['base-text']};
 	background-color: ${(props) => props.theme.background};
  }
 

@@ -11,6 +11,7 @@ import {
   CheckoutContainer,
   CoffeeOrderContainer,
   DeliveryContainer,
+  ErrorMessage,
   FieldsetContainer,
   FormContainer,
   Header,
@@ -24,19 +25,40 @@ import {
   PaymentMethodsContainer,
 } from './styles'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
+
+const orderCheckoutFormSchema = zod.object({
+  cep: zod.string().min(8, 'O CEP inválido. Mínimo 8 caracteres'),
+  street: zod.string().min(1, 'O nome da rua é obrigatório'),
+  number: zod.string().min(1, 'O número do endereço é obrigatório'),
+  complement: zod.string().min(0),
+  district: zod.string().min(1, 'O nome do bairro é obrigatório'),
+  city: zod.string().min(1, 'O nome da cidade é obrigatório'),
+  state: zod
+    .string()
+    .min(2, 'O nome do estado é obrigatório')
+    .max(2, 'Insira apenas a siga do estado'),
+  paymentMethod: zod.string().min(1, 'Escolha a forma de pagamento'),
+})
 
 export const Checkout = () => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, formState } = useForm({
+    resolver: zodResolver(orderCheckoutFormSchema),
+  })
 
-  const handleCheckoutSubmit = (data: any) => {
-    console.log({ ...data, items: { a: 'a', b: 'b' } })
+  const handleOrderCheckoutSubmit = () => {
+    // console.log({ ...data, items: { a: 'a', b: 'b' } })
+    console.log('enviado')
   }
+
+  const orderCheckoutFormErrors: any = formState.errors
 
   return (
     <CheckoutContainer>
       <h1>Complete seu pedido</h1>
 
-      <FormContainer onSubmit={handleSubmit(handleCheckoutSubmit)}>
+      <FormContainer onSubmit={handleSubmit(handleOrderCheckoutSubmit)}>
         <DeliveryContainer>
           <FieldsetContainer>
             <Header iconColor="yellow">
@@ -59,6 +81,11 @@ export const Checkout = () => {
                     id="cep"
                     placeholder="CEP"
                   />
+                  {orderCheckoutFormErrors.cep && (
+                    <ErrorMessage>
+                      {orderCheckoutFormErrors.cep.message}
+                    </ErrorMessage>
+                  )}
                 </Input>
               </InputRow>
               <Input>
@@ -69,6 +96,11 @@ export const Checkout = () => {
                   id="street"
                   placeholder="Rua"
                 />
+                {orderCheckoutFormErrors.street && (
+                  <ErrorMessage>
+                    {orderCheckoutFormErrors.street.message}
+                  </ErrorMessage>
+                )}
               </Input>
               <InputRow>
                 <Input>
@@ -79,6 +111,11 @@ export const Checkout = () => {
                     id="number"
                     placeholder="Número"
                   />
+                  {orderCheckoutFormErrors.number && (
+                    <ErrorMessage>
+                      {orderCheckoutFormErrors.number.message}
+                    </ErrorMessage>
+                  )}
                 </Input>
                 <Input>
                   <label htmlFor="complement">Complemento</label>
@@ -88,6 +125,11 @@ export const Checkout = () => {
                     id="complement"
                     placeholder="Complemento"
                   />
+                  {orderCheckoutFormErrors.complement && (
+                    <ErrorMessage>
+                      {orderCheckoutFormErrors.complement.message}
+                    </ErrorMessage>
+                  )}
                 </Input>
               </InputRow>
               <InputRow>
@@ -99,6 +141,11 @@ export const Checkout = () => {
                     id="district"
                     placeholder="Bairro"
                   />
+                  {orderCheckoutFormErrors.district && (
+                    <ErrorMessage>
+                      {orderCheckoutFormErrors.district.message}
+                    </ErrorMessage>
+                  )}
                 </Input>
                 <Input>
                   <label htmlFor="city">Cidade</label>
@@ -108,6 +155,11 @@ export const Checkout = () => {
                     id="city"
                     placeholder="Cidade"
                   />
+                  {orderCheckoutFormErrors.city && (
+                    <ErrorMessage>
+                      {orderCheckoutFormErrors.city.message}
+                    </ErrorMessage>
+                  )}
                 </Input>
                 <Input>
                   <label htmlFor="state">Estado</label>
@@ -117,6 +169,11 @@ export const Checkout = () => {
                     id="state"
                     placeholder="UF"
                   />
+                  {orderCheckoutFormErrors.state && (
+                    <ErrorMessage>
+                      {orderCheckoutFormErrors.state.message}
+                    </ErrorMessage>
+                  )}
                 </Input>
               </InputRow>
             </InputWrap>
@@ -178,6 +235,11 @@ export const Checkout = () => {
                 </div>
               </PaymentMethod>
             </PaymentMethodsContainer>
+            {orderCheckoutFormErrors.paymentMethod && (
+              <ErrorMessage>
+                {orderCheckoutFormErrors.paymentMethod.message}
+              </ErrorMessage>
+            )}
           </FieldsetContainer>
         </DeliveryContainer>
 

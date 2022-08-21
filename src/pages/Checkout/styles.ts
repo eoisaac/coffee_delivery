@@ -17,10 +17,8 @@ export const CheckoutContainer = styled.main`
 `
 
 export const FormContainer = styled.form`
-  /* flex: 1; */
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
   gap: 2rem;
 
   @media (min-width: 868px) {
@@ -37,6 +35,12 @@ export const FieldsetContainer = styled.fieldset`
   @media (min-width: 768px) {
     padding: 2.5rem;
   }
+`
+
+export const ErrorMessage = styled.div`
+  margin: 0.2rem 0 0 0.2rem;
+  font-size: 0.75rem;
+  color: red;
 `
 
 const ICON_COLOR = {
@@ -74,7 +78,6 @@ export const Header = styled.div<HeaderProps>`
 `
 
 export const DeliveryContainer = styled.div`
-  /* width: 65%; */
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -82,7 +85,7 @@ export const DeliveryContainer = styled.div`
 `
 
 export const CoffeeOrderContainer = styled(FieldsetContainer)`
-  /* width: 35%; */
+  max-height: 480px;
   flex: 0.5;
   display: flex;
   flex-direction: column;
