@@ -23,16 +23,20 @@ import {
   PaymentMethod,
   PaymentMethodsContainer,
 } from './styles'
-// import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 export const Checkout = () => {
-  // const { register, handleSubmit } = useForm()
+  const { register, handleSubmit } = useForm()
+
+  const handleCheckoutSubmit = (data: any) => {
+    console.log({ ...data, items: { a: 'a', b: 'b' } })
+  }
 
   return (
     <CheckoutContainer>
       <h1>Complete seu pedido</h1>
 
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmit(handleCheckoutSubmit)}>
         <DeliveryContainer>
           <FieldsetContainer>
             <Header iconColor="yellow">
@@ -49,14 +53,19 @@ export const Checkout = () => {
               <InputRow>
                 <Input>
                   <label htmlFor="cep">Cep</label>
-                  <input type="text" name="cep" id="cep" placeholder="CEP" />
+                  <input
+                    type="text"
+                    {...register('cep', { required: true })}
+                    id="cep"
+                    placeholder="CEP"
+                  />
                 </Input>
               </InputRow>
               <Input>
                 <label htmlFor="street">Rua</label>
                 <input
                   type="text"
-                  name="street"
+                  {...register('street', { required: true })}
                   id="street"
                   placeholder="Rua"
                 />
@@ -66,7 +75,7 @@ export const Checkout = () => {
                   <label htmlFor="number">Número</label>
                   <input
                     type="text"
-                    name="number"
+                    {...register('number', { required: true })}
                     id="number"
                     placeholder="Número"
                   />
@@ -75,7 +84,7 @@ export const Checkout = () => {
                   <label htmlFor="complement">Complemento</label>
                   <input
                     type="text"
-                    name="complement"
+                    {...register('complement', { required: false })}
                     id="complement"
                     placeholder="Complemento"
                   />
@@ -86,7 +95,7 @@ export const Checkout = () => {
                   <label htmlFor="district">Bairro</label>
                   <input
                     type="text"
-                    name="district"
+                    {...register('district', { required: true })}
                     id="district"
                     placeholder="Bairro"
                   />
@@ -95,14 +104,19 @@ export const Checkout = () => {
                   <label htmlFor="city">Cidade</label>
                   <input
                     type="text"
-                    name="city"
+                    {...register('city', { required: true })}
                     id="city"
                     placeholder="Cidade"
                   />
                 </Input>
                 <Input>
                   <label htmlFor="state">Estado</label>
-                  <input type="text" name="state" id="state" placeholder="UF" />
+                  <input
+                    type="text"
+                    {...register('state', { required: true })}
+                    id="state"
+                    placeholder="UF"
+                  />
                 </Input>
               </InputRow>
             </InputWrap>
@@ -124,7 +138,7 @@ export const Checkout = () => {
               <PaymentMethod htmlFor="credit">
                 <input
                   type="radio"
-                  name="paymentMethod"
+                  {...register('paymentMethod', { required: true })}
                   id="credit"
                   value="credit"
                 />
@@ -138,7 +152,7 @@ export const Checkout = () => {
               <PaymentMethod htmlFor="debit">
                 <input
                   type="radio"
-                  name="paymentMethod"
+                  {...register('paymentMethod')}
                   id="debit"
                   value="debit"
                 />
@@ -152,7 +166,7 @@ export const Checkout = () => {
               <PaymentMethod htmlFor="money">
                 <input
                   type="radio"
-                  name="paymentMethod"
+                  {...register('paymentMethod')}
                   id="money"
                   value="money"
                 />
