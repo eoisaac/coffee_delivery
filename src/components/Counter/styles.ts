@@ -10,7 +10,6 @@ export const CounterContainer = styled.div`
   background-color: ${(props) => props.theme['base-button']};
 
   input {
-    all: none;
     width: 100%;
     height: 100%;
     text-align: center;
