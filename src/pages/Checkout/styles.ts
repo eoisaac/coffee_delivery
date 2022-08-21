@@ -201,9 +201,13 @@ export const InputWrap = styled.div`
 
 export const InputRow = styled.span`
   width: 100%;
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 `
 
 export const Input = styled.div`
