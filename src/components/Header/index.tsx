@@ -34,7 +34,7 @@ export const Header = () => {
 
         <nav>
           <NavLink to="/checkout">
-            <CartButton>
+            <CartButton type="button">
               {cartItems !== 0 && <ButtonBadge>{cartItems}</ButtonBadge>}
 
               <ShoppingCart size={22} weight="fill" />

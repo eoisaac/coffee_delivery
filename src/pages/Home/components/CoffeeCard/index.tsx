@@ -42,7 +42,7 @@ export const CoffeeCard = ({
 
   return (
     <CoffeeContainer>
-      <img src={`./src/assets/${image}`} alt="" />
+      <img src={`./src/assets/${image}`} alt={`Foto do ${name}`} />
 
       <TagWrapper>
         {tags.map((tag) => (
@@ -59,7 +59,7 @@ export const CoffeeCard = ({
         </CoffeePrice>
 
         <BuyButtons>
-          <Counter setCoffeeAmount={setCoffeeAmount} />
+          <Counter setAmount={setCoffeeAmount} />
 
           <CartButton onClick={handleAddItemIntoCart}>
             <ShoppingCart size={22} weight="fill" />

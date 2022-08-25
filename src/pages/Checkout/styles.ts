@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import { FieldsetContainer } from './components/OrderCheckoutForm/styles'
 
 export const CheckoutContainer = styled.main`
@@ -28,6 +27,7 @@ export const CheckoutContainer = styled.main`
   }
 `
 export const CoffeeOrderContainer = styled(FieldsetContainer)`
+  height: 70%;
   flex: 0.5;
   display: flex;
   flex-direction: column;
@@ -40,10 +40,9 @@ export const CoffeeOrderContainer = styled(FieldsetContainer)`
 
 export const OrderList = styled.ul`
   flex: 1;
-  max-height: 260px;
+  max-height: 300px;
   overflow-y: auto;
   list-style: none;
-  background-color: beige;
 `
 
 export const OrderResume = styled.div`

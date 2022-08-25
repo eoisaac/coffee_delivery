@@ -3,10 +3,11 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { CounterContainer } from './styles'
 
 interface CounterProps {
-  setCoffeeAmount: (amount: number) => void
+  size?: 'small' | 'large'
+  setAmount: (amount: number) => void
 }
 
-export const Counter = ({ setCoffeeAmount }: CounterProps) => {
+export const Counter = ({ size = 'large', setAmount }: CounterProps) => {
   const [counter, setCounter] = useState(1)
 
   const handleAmountInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -22,12 +23,12 @@ export const Counter = ({ setCoffeeAmount }: CounterProps) => {
     if (counter > 99) setCounter(99)
     if (counter < 1) setCounter(1)
 
-    setCoffeeAmount(counter)
-  }, [counter, setCoffeeAmount])
+    setAmount(counter)
+  }, [counter, setAmount])
 
   return (
-    <CounterContainer>
-      <button onClick={handleAmountBtns.decrement}>
+    <CounterContainer size={size}>
+      <button type="button" onClick={handleAmountBtns.decrement}>
         <Minus weight="bold" />
       </button>
 
@@ -40,7 +41,7 @@ export const Counter = ({ setCoffeeAmount }: CounterProps) => {
         onFocus={(e) => e.target.select()}
       />
 
-      <button onClick={handleAmountBtns.increment}>
+      <button type="button" onClick={handleAmountBtns.increment}>
         <Plus weight="bold" />
       </button>
     </CounterContainer>

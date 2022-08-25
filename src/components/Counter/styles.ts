@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 
-export const CounterContainer = styled.div`
+interface CounterContainerProps {
+  size?: 'small' | 'large'
+}
+
+export const CounterContainer = styled.div<CounterContainerProps>`
   width: 4.5rem;
-  height: 2.375rem;
+  height: ${(props) => (props.size === 'small' ? '2rem' : '2.375rem')};
   display: inline-flex;
   gap: 0.25rem;
   padding: 0.5rem;

@@ -1,11 +1,23 @@
-import { OrderCoffeeContainer } from './styles'
+import { useState } from 'react'
+import { Counter } from '../../../../components/Counter'
+import { Coffee } from '../../../Home/components/CoffeeCard'
+import { ButtonsWrap, CoffeeData, OrderCoffeeContainer, Price } from './styles'
 
-export const OrderCoffee = () => {
+export const OrderCoffee = ({ name, price, amount, image }: Coffee) => {
+  const [coffeeAmount, setCoffeeAmount] = useState(amount)
+
   return (
     <OrderCoffeeContainer>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum modi esse
-      quasi eum eligendi architecto ipsa illo neque expedita, sequi accusamus
-      odit aut rerum repellat alias nesciunt qui eaque pariatur?
+      <img src={`./src/assets/${image}`} alt={`Foto do ${name}`} />
+      <CoffeeData>
+        <span>{name}</span>
+        <ButtonsWrap>
+          <Counter size="small" setAmount={setCoffeeAmount} />
+
+          <button type="button">Remover</button>
+        </ButtonsWrap>
+      </CoffeeData>
+      <Price>R$ {price.toFixed(2)}</Price>
     </OrderCoffeeContainer>
   )
 }

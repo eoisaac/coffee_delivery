@@ -11,8 +11,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { Coffee } from 'phosphor-react'
 import { Header } from './components/OrderCheckoutForm/styles'
+import { useContext } from 'react'
+import { OrderContext } from '../../context/OrderContext'
+import { OrderCoffee } from './components/OrderCoffee'
 
 export const Checkout = () => {
+  const { cart } = useContext(OrderContext)
+
   const orderCheckoutFormSchema = zod.object({
     cep: zod.string().min(8, 'O CEP inválido. Mínimo 8 caracteres'),
     street: zod.string().min(1, 'Informe o nome da rua'),
@@ -61,7 +66,20 @@ export const Checkout = () => {
             </div>
           </Header>
 
-          <OrderList></OrderList>
+          <OrderList>
+            {cart.map((coffee) => {
+              return (
+                <OrderCoffee
+                  key={coffee.id}
+                  id={coffee.id}
+                  name={coffee.name}
+                  price={coffee.price}
+                  amount={coffee.amount}
+                  image={coffee.image}
+                />
+              )
+            })}
+          </OrderList>
 
           <OrderFooter>
             <OrderResume>
