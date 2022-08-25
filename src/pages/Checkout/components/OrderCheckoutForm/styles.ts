@@ -1,15 +1,5 @@
 import styled from 'styled-components'
 
-export const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-
-  @media (min-width: 868px) {
-    flex-direction: row;
-  }
-`
-
 export const FieldsetContainer = styled.fieldset`
   all: unset;
   padding: 1rem;
@@ -24,7 +14,7 @@ export const FieldsetContainer = styled.fieldset`
 export const ErrorMessage = styled.div`
   margin: 0.2rem 0 0 0.2rem;
   font-size: 0.75rem;
-  color: red;
+  color: ${(props) => props.theme.purple};
 `
 
 const ICON_COLOR = {
@@ -68,71 +58,6 @@ export const DeliveryContainer = styled.div`
   gap: 0.75rem;
 `
 
-export const CoffeeOrderContainer = styled(FieldsetContainer)`
-  /* max-height: 480px; */
-  flex: 0.5;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
-  border-radius: 6px;
-
-  @media (min-width: 868px) {
-    border-radius: 6px 44px;
-  }
-`
-
-export const OrderList = styled.ul`
-  flex: 1;
-  max-height: 260px;
-  overflow-y: auto;
-  list-style: none;
-  background-color: beige;
-`
-
-export const OrderResume = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 1.5rem 0;
-
-  div {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.875rem;
-    color: ${(props) => props.theme['base-text']};
-
-    &:last-child {
-      font-family: 'Baloo 2', cursive;
-      font-size: 1.25rem;
-    }
-  }
-`
-
-export const OrderFooter = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  button {
-    padding: 1rem;
-    text-transform: uppercase;
-    font-size: 0.875rem;
-    font-weight: 700;
-    line-height: 130%;
-    color: ${(props) => props.theme.white};
-    cursor: pointer;
-    transition: all 0.1s ease-in-out;
-    outline: none;
-    border: none;
-    border-radius: 6px;
-    background-color: ${(props) => props.theme.yellow};
-
-    &:hover {
-      background-color: ${(props) => props.theme['yellow-dark']};
-    }
-  }
-`
-
 export const PaymentMethodsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -157,6 +82,7 @@ export const PaymentMethod = styled.label`
     gap: 0.75rem;
     align-items: center;
     text-transform: uppercase;
+    line-height: 0;
     font-size: 0.75rem;
     padding: 1rem;
     color: ${(props) => props.theme['base-text']};

@@ -1,8 +1,16 @@
-import { CheckoutContainer } from './styles'
+import {
+  CheckoutContainer,
+  CoffeeOrderContainer,
+  OrderFooter,
+  OrderList,
+  OrderResume,
+} from './styles'
 import { OrderCheckoutForm } from './components/OrderCheckoutForm'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
+import { Coffee } from 'phosphor-react'
+import { Header } from './components/OrderCheckoutForm/styles'
 
 export const Checkout = () => {
   const orderCheckoutFormSchema = zod.object({
@@ -32,18 +40,47 @@ export const Checkout = () => {
   const orderCheckoutFormErrors = errors
 
   const handleOrderCheckoutSubmit = (data: OrderCheckoutFormData) => {
-    console.log({ ...data, items: { a: 'a', b: 'b' } })
-    console.log('enviado')
     reset()
   }
 
   return (
     <CheckoutContainer>
       <h1>Complete seu pedido</h1>
+
       <form onSubmit={handleSubmit(handleOrderCheckoutSubmit)}>
         <FormProvider {...orderCheckoutForm}>
           <OrderCheckoutForm formErrors={orderCheckoutFormErrors} />
         </FormProvider>
+
+        <CoffeeOrderContainer>
+          <Header iconColor="gray">
+            <Coffee size={22} />
+            <div>
+              <legend>Cafés Selecionados</legend>
+              <span>Aqui estão todos os cafés do seu pedido</span>
+            </div>
+          </Header>
+
+          <OrderList></OrderList>
+
+          <OrderFooter>
+            <OrderResume>
+              <div>
+                <span>Total de itens</span>
+                <span>R$ 29,70</span>
+              </div>
+              <div>
+                <span>Entrega</span>
+                <span>R$ 3,50</span>
+              </div>
+              <div>
+                <span>Total</span>
+                <span>R$ 33,20</span>
+              </div>
+            </OrderResume>
+            <button type="submit">Confirmar Pedido</button>
+          </OrderFooter>
+        </CoffeeOrderContainer>
       </form>
     </CheckoutContainer>
   )

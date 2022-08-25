@@ -1,5 +1,7 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
+import { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { OrderContext } from '../../context/OrderContext'
 import {
   ButtonBadge,
   CartButton,
@@ -9,7 +11,9 @@ import {
 } from './styles'
 
 export const Header = () => {
-  const amount = 3
+  const { cart } = useContext(OrderContext)
+
+  const cartItems = cart.length
 
   return (
     <HeaderContainer>
@@ -31,7 +35,7 @@ export const Header = () => {
         <nav>
           <NavLink to="/checkout">
             <CartButton>
-              {amount && <ButtonBadge>{amount}</ButtonBadge>}
+              {cartItems !== 0 && <ButtonBadge>{cartItems}</ButtonBadge>}
 
               <ShoppingCart size={22} weight="fill" />
             </CartButton>

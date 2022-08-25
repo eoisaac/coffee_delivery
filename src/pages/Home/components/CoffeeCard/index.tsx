@@ -12,7 +12,7 @@ import { Counter } from '../../../../components/Counter'
 import { useContext, useState } from 'react'
 import { OrderContext } from '../../../../context/OrderContext'
 
-export interface Coffee extends CoffeeItem {
+export interface Coffee extends Omit<CoffeeItem, 'description' | 'tags'> {
   amount: number
 }
 
@@ -25,8 +25,20 @@ export const CoffeeCard = ({
   price,
 }: CoffeeItem) => {
   const { cart, setCart } = useContext(OrderContext)
-
   const [coffeeAmount, setCoffeeAmount] = useState(1)
+
+  const handleAddItemIntoCart = () => {
+    setCart([
+      ...cart,
+      {
+        id,
+        name,
+        price,
+        amount: coffeeAmount,
+        image,
+      },
+    ])
+  }
 
   return (
     <CoffeeContainer>
@@ -49,7 +61,7 @@ export const CoffeeCard = ({
         <BuyButtons>
           <Counter setCoffeeAmount={setCoffeeAmount} />
 
-          <CartButton>
+          <CartButton onClick={handleAddItemIntoCart}>
             <ShoppingCart size={22} weight="fill" />
           </CartButton>
         </BuyButtons>

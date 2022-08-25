@@ -1,5 +1,4 @@
 import {
-  FormContainer,
   DeliveryContainer,
   FieldsetContainer,
   Header,
@@ -9,27 +8,19 @@ import {
   ErrorMessage,
   PaymentMethodsContainer,
   PaymentMethod,
-  CoffeeOrderContainer,
-  OrderList,
-  OrderFooter,
-  OrderResume,
 } from './styles'
-import { OrderCoffee } from '../OrderCoffee'
-import {
-  MapPin,
-  CurrencyDollar,
-  CreditCard,
-  Bank,
-  Money,
-  Coffee,
-} from 'phosphor-react'
+import { MapPin, CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
 
-export const OrderCheckoutForm = ({ formErrors }: any) => {
+interface OrderCheckoutFormProps {
+  formErrors: any
+}
+
+export const OrderCheckoutForm = ({ formErrors }: OrderCheckoutFormProps) => {
   const { register } = useFormContext()
 
   return (
-    <FormContainer>
+    <>
       <DeliveryContainer>
         <FieldsetContainer>
           <Header iconColor="yellow">
@@ -194,45 +185,6 @@ export const OrderCheckoutForm = ({ formErrors }: any) => {
           )}
         </FieldsetContainer>
       </DeliveryContainer>
-
-      <CoffeeOrderContainer>
-        <Header iconColor="gray">
-          <Coffee size={22} />
-          <div>
-            <legend>Cafés Selecionados</legend>
-            <span>Aqui estão todos os cafés do seu pedido</span>
-          </div>
-        </Header>
-
-        <OrderList>
-          <OrderCoffee />
-          <OrderCoffee />
-          <OrderCoffee />
-          <OrderCoffee />
-          <OrderCoffee />
-          <OrderCoffee />
-          <OrderCoffee />
-        </OrderList>
-
-        <OrderFooter>
-          <OrderResume>
-            <div>
-              <span>Total de itens</span>
-              <span>R$ 29,70</span>
-            </div>
-            <div>
-              <span>Entrega</span>
-              <span>R$ 3,50</span>
-            </div>
-            <div>
-              <span>Total</span>
-              <span>R$ 33,20</span>
-            </div>
-          </OrderResume>
-
-          <button type="submit">Confirmar Pedido</button>
-        </OrderFooter>
-      </CoffeeOrderContainer>
-    </FormContainer>
+    </>
   )
 }

@@ -1,6 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
-import { useState } from 'react'
-import { CoffeeItem, coffeesList } from '../../data/coffees_data'
+import { coffeesList } from '../../data/coffees_data'
 import { CoffeeCard } from './components/CoffeeCard'
 import {
   IntroContent,
@@ -14,13 +13,7 @@ import {
   CoffeesGrid,
 } from './styles'
 
-interface Coffee extends CoffeeItem {
-  amount: number
-}
-
 export const Home = () => {
-  const [CartData, setCartData] = useState<Coffee[]>([])
-
   return (
     <HomeContainer>
       <IntroContainer>
