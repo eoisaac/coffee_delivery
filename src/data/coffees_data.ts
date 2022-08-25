@@ -1,4 +1,4 @@
-export interface CoffeeDrink {
+export interface CoffeeItem {
   id: string
   name: string
   description: string
@@ -7,7 +7,7 @@ export interface CoffeeDrink {
   price: number
 }
 
-export const coffeesList: CoffeeDrink[] = [
+export const coffeesList: CoffeeItem[] = [
   {
     id: '0',
     name: 'Expresso Tradicional',

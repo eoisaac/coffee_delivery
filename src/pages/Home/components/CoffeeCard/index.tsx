@@ -6,9 +6,15 @@ import {
   CoffeePrice,
   TagWrapper,
 } from './styles'
-import { CoffeeDrink } from '../../../../data/coffees_data'
+import { CoffeeItem } from '../../../../data/coffees_data'
 import { ShoppingCart } from 'phosphor-react'
 import { Counter } from '../../../../components/Counter'
+import { useContext, useState } from 'react'
+import { OrderContext } from '../../../../context/OrderContext'
+
+export interface Coffee extends CoffeeItem {
+  amount: number
+}
 
 export const CoffeeCard = ({
   id,
@@ -17,7 +23,11 @@ export const CoffeeCard = ({
   tags,
   image,
   price,
-}: CoffeeDrink) => {
+}: CoffeeItem) => {
+  const { cart, setCart } = useContext(OrderContext)
+
+  const [coffeeAmount, setCoffeeAmount] = useState(1)
+
   return (
     <CoffeeContainer>
       <img src={`./src/assets/${image}`} alt="" />
@@ -37,7 +47,8 @@ export const CoffeeCard = ({
         </CoffeePrice>
 
         <BuyButtons>
-          <Counter />
+          <Counter setCoffeeAmount={setCoffeeAmount} />
+
           <CartButton>
             <ShoppingCart size={22} weight="fill" />
           </CartButton>

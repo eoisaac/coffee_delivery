@@ -2,22 +2,28 @@ import { Minus, Plus } from 'phosphor-react'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { CounterContainer } from './styles'
 
-export const Counter = () => {
-  const [coffeeAamout, setCoffeeAmount] = useState(1)
+interface CounterProps {
+  setCoffeeAmount: (amount: number) => void
+}
 
-  const handleCoffeeAmount = (e: ChangeEvent<HTMLInputElement>) => {
-    setCoffeeAmount(Number(e.target.value))
+export const Counter = ({ setCoffeeAmount }: CounterProps) => {
+  const [counter, setCounter] = useState(1)
+
+  const handleAmountInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setCounter(Number(e.target.value))
   }
 
   const handleAmountBtns = {
-    increment: () => setCoffeeAmount((prevAmount) => prevAmount + 1),
-    decrement: () => setCoffeeAmount((prevAmount) => prevAmount - 1),
+    increment: () => setCounter((prevAmount) => prevAmount + 1),
+    decrement: () => setCounter((prevAmount) => prevAmount - 1),
   }
 
   useEffect(() => {
-    if (coffeeAamout > 99) setCoffeeAmount(99)
-    if (coffeeAamout < 1) setCoffeeAmount(1)
-  }, [coffeeAamout])
+    if (counter > 99) setCounter(99)
+    if (counter < 1) setCounter(1)
+
+    setCoffeeAmount(counter)
+  }, [counter, setCoffeeAmount])
 
   return (
     <CounterContainer>
@@ -29,8 +35,8 @@ export const Counter = () => {
         type="number"
         min={1}
         max={99}
-        value={coffeeAamout}
-        onChange={handleCoffeeAmount}
+        value={counter}
+        onChange={handleAmountInput}
         onFocus={(e) => e.target.select()}
       />
 
