@@ -13,7 +13,7 @@ import {
 export const Header = () => {
   const { cart } = useContext(OrderContext)
 
-  const cartItems = cart.length
+  const cartIsEmpty = cart.length <= 0
 
   return (
     <HeaderContainer>
@@ -35,7 +35,7 @@ export const Header = () => {
         <nav>
           <NavLink to="/checkout">
             <CartButton type="button">
-              {cartItems !== 0 && <ButtonBadge>{cartItems}</ButtonBadge>}
+              {cartIsEmpty || <ButtonBadge>{cart.length}</ButtonBadge>}
 
               <ShoppingCart size={22} weight="fill" />
             </CartButton>

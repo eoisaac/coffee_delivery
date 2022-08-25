@@ -88,3 +88,18 @@ export const OrderFooter = styled.div`
     }
   }
 `
+
+export const EmptyAlert = styled.div`
+  max-height: 300px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: center;
+
+  a {
+    display: block;
+  }
+`

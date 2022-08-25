@@ -1,6 +1,7 @@
 import {
   CheckoutContainer,
   CoffeeOrderContainer,
+  EmptyAlert,
   OrderFooter,
   OrderList,
   OrderResume,
@@ -9,14 +10,17 @@ import { OrderCheckoutForm } from './components/OrderCheckoutForm'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
-import { Coffee } from 'phosphor-react'
+import { Coffee, ShoppingCart } from 'phosphor-react'
 import { Header } from './components/OrderCheckoutForm/styles'
 import { useContext } from 'react'
 import { OrderContext } from '../../context/OrderContext'
 import { OrderCoffee } from './components/OrderCoffee'
+import { Link } from 'react-router-dom'
 
 export const Checkout = () => {
   const { cart } = useContext(OrderContext)
+
+  const cartIsEmpty = cart.length <= 0
 
   const orderCheckoutFormSchema = zod.object({
     cep: zod.string().min(8, 'O CEP inválido. Mínimo 8 caracteres'),
@@ -66,20 +70,30 @@ export const Checkout = () => {
             </div>
           </Header>
 
-          <OrderList>
-            {cart.map((coffee) => {
-              return (
-                <OrderCoffee
-                  key={coffee.id}
-                  id={coffee.id}
-                  name={coffee.name}
-                  price={coffee.price}
-                  amount={coffee.amount}
-                  image={coffee.image}
-                />
-              )
-            })}
-          </OrderList>
+          {cartIsEmpty ? (
+            <EmptyAlert>
+              <ShoppingCart size={60} />
+              <div>
+                <strong>Oops... Seu carrinho está vazio!</strong>
+                <Link to="/"> ver cafés </Link>
+              </div>
+            </EmptyAlert>
+          ) : (
+            <OrderList>
+              {cart.map((coffee) => {
+                return (
+                  <OrderCoffee
+                    key={coffee.id}
+                    id={coffee.id}
+                    name={coffee.name}
+                    price={coffee.price}
+                    amount={coffee.amount}
+                    image={coffee.image}
+                  />
+                )
+              })}
+            </OrderList>
+          )}
 
           <OrderFooter>
             <OrderResume>

@@ -4,11 +4,16 @@ import { CounterContainer } from './styles'
 
 interface CounterProps {
   size?: 'small' | 'large'
+  counterValue?: number
   setAmount: (amount: number) => void
 }
 
-export const Counter = ({ size = 'large', setAmount }: CounterProps) => {
-  const [counter, setCounter] = useState(1)
+export const Counter = ({
+  size = 'large',
+  setAmount,
+  counterValue = 1,
+}: CounterProps) => {
+  const [counter, setCounter] = useState(counterValue)
 
   const handleAmountInput = (e: ChangeEvent<HTMLInputElement>) => {
     setCounter(Number(e.target.value))

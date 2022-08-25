@@ -38,6 +38,8 @@ export const CoffeeCard = ({
         image,
       },
     ])
+
+    setCoffeeAmount(1)
   }
 
   return (
@@ -59,7 +61,7 @@ export const CoffeeCard = ({
         </CoffeePrice>
 
         <BuyButtons>
-          <Counter setAmount={setCoffeeAmount} />
+          <Counter setAmount={setCoffeeAmount} counterValue={coffeeAmount} />
 
           <CartButton onClick={handleAddItemIntoCart}>
             <ShoppingCart size={22} weight="fill" />
