@@ -98,6 +98,15 @@ export const EmptyAlert = styled.div`
   justify-content: center;
   gap: 1.5rem;
   text-align: center;
+  color: ${(props) => props.theme['base-label']};
+
+  strong {
+    margin-bottom: 1rem;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.2rem;
+    line-height: 130%;
+    color: ${(props) => props.theme['base-subtitle']};
+  }
 
   a {
     display: block;
