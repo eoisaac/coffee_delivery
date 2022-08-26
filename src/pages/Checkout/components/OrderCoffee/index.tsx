@@ -28,7 +28,7 @@ export const OrderCoffee = ({ id, name, price, amount, image }: Coffee) => {
         return coffee.id === id ? { ...coffee, amount: coffeeAmount } : coffee
       }),
     )
-  }, [coffeeAmount])
+  }, [cart, coffeeAmount, id, setCart])
 
   return (
     <OrderCoffeeContainer>

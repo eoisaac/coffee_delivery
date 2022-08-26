@@ -8,27 +8,18 @@ export const CounterContainer = styled.div<CounterContainerProps>`
   width: 4.5rem;
   height: ${(props) => (props.size === 'small' ? '2rem' : '2.375rem')};
   display: inline-flex;
-  gap: 0.25rem;
+  align-items: center;
   padding: 0.5rem;
+  gap: 0.25rem;
   border-radius: 6px;
   background-color: ${(props) => props.theme['base-button']};
 
-  input {
-    width: 100%;
-    height: 100%;
+  div {
+    flex: 1;
     text-align: center;
     font-size: 1rem;
+    line-height: 0;
     color: ${(props) => props.theme['base-title']};
-    outline: none;
-    border: none;
-    background-color: transparent;
-
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    -moz-appearance: textfield;
   }
 
   button {

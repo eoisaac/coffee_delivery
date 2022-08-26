@@ -1,27 +1,19 @@
 import { Minus, Plus } from 'phosphor-react'
-import { ChangeEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CounterContainer } from './styles'
 
 interface CounterProps {
-  size?: 'small' | 'large'
-  counterValue?: number
+  size: 'small' | 'large'
+  counterValue: number | 1
   setAmount: (amount: number) => void
 }
 
-export const Counter = ({
-  size = 'large',
-  setAmount,
-  counterValue = 1,
-}: CounterProps) => {
+export const Counter = ({ size, setAmount, counterValue }: CounterProps) => {
   const [counter, setCounter] = useState(counterValue)
 
-  const handleAmountInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setCounter(Number(e.target.value))
-  }
-
   const handleAmountBtns = {
-    increment: () => setCounter((prevAmount) => prevAmount + 1),
-    decrement: () => setCounter((prevAmount) => prevAmount - 1),
+    increment: () => setCounter((prevCounter) => prevCounter + 1),
+    decrement: () => setCounter((prevCounter) => prevCounter - 1),
   }
 
   useEffect(() => {
@@ -37,14 +29,7 @@ export const Counter = ({
         <Minus weight="bold" />
       </button>
 
-      <input
-        type="number"
-        min={1}
-        max={99}
-        value={counter}
-        onChange={handleAmountInput}
-        onFocus={(e) => e.target.select()}
-      />
+      <div>{counter}</div>
 
       <button type="button" onClick={handleAmountBtns.increment}>
         <Plus weight="bold" />
