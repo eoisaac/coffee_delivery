@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { FieldsetContainer } from './components/OrderCheckoutForm/styles'
+import { RemoveButton } from './components/OrderCoffee/styles'
 
 export const CheckoutContainer = styled.main`
   flex: 1;
@@ -27,7 +28,7 @@ export const CheckoutContainer = styled.main`
   }
 `
 export const CoffeeOrderContainer = styled(FieldsetContainer)`
-  height: 70%;
+  max-height: 75%;
   flex: 0.5;
   display: flex;
   flex-direction: column;
@@ -90,25 +91,40 @@ export const OrderFooter = styled.div`
 `
 
 export const EmptyAlert = styled.div`
-  max-height: 300px;
+  max-height: 400px;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 0.5rem;
   text-align: center;
-  color: ${(props) => props.theme['base-label']};
+  color: ${(props) => props.theme['base-hover']};
 
   strong {
-    margin-bottom: 1rem;
-    font-family: 'Baloo 2', cursive;
-    font-size: 1.2rem;
+    display: block;
+    font-size: 1rem;
     line-height: 130%;
-    color: ${(props) => props.theme['base-subtitle']};
+    color: ${(props) => props.theme['base-text']};
   }
 
   a {
-    display: block;
+    text-decoration: none;
+  }
+`
+
+export const AlertButton = styled(RemoveButton)`
+  height: 32px;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 0;
+  text-transform: none;
+  transition: all 0.2s;
+  background-color: ${(props) => props.theme['purple-light']};
+
+  &:hover {
+    color: ${(props) => props.theme['purple-light']};
+    background-color: ${(props) => props.theme['purple-dark']};
   }
 `

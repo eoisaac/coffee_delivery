@@ -1,4 +1,5 @@
 import {
+  AlertButton,
   CheckoutContainer,
   CoffeeOrderContainer,
   EmptyAlert,
@@ -11,14 +12,16 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { Coffee, ShoppingCart } from 'phosphor-react'
-import { Header } from './components/OrderCheckoutForm/styles'
-import { useContext } from 'react'
+import { ErrorMessage, Header } from './components/OrderCheckoutForm/styles'
+import { useContext, useState } from 'react'
 import { OrderContext } from '../../context/OrderContext'
 import { OrderCoffee } from './components/OrderCoffee'
 import { Link } from 'react-router-dom'
 
 export const Checkout = () => {
-  const { cart } = useContext(OrderContext)
+  const { cart, cartTotal } = useContext(OrderContext)
+
+  const [displayCartError, setDisplayCartError] = useState(false)
 
   const cartIsEmpty = cart.length <= 0
 
@@ -48,7 +51,11 @@ export const Checkout = () => {
   const { errors } = formState
   const orderCheckoutFormErrors = errors
 
-  const handleOrderCheckoutSubmit = (data: OrderCheckoutFormData) => {
+  const handleCartError = () => {
+    cartIsEmpty && setDisplayCartError(true)
+  }
+
+  const handleOrderCheckoutSubmit = (order: OrderCheckoutFormData) => {
     reset()
   }
 
@@ -72,10 +79,12 @@ export const Checkout = () => {
 
           {cartIsEmpty ? (
             <EmptyAlert>
-              <ShoppingCart size={60} />
+              <ShoppingCart size={50} />
               <div>
                 <strong>Oops... Seu carrinho está vazio!</strong>
-                <Link to="/"> ver cafés </Link>
+                <Link to="/">
+                  <AlertButton type="button">Ver cafés</AlertButton>
+                </Link>
               </div>
             </EmptyAlert>
           ) : (
@@ -96,21 +105,26 @@ export const Checkout = () => {
           )}
 
           <OrderFooter>
+            {displayCartError && (
+              <ErrorMessage>Adicione um item ao seu carrinho</ErrorMessage>
+            )}
             <OrderResume>
               <div>
                 <span>Total de itens</span>
-                <span>R$ 29,70</span>
+                <span>R$ {cartTotal.toFixed(2)}</span>
               </div>
               <div>
                 <span>Entrega</span>
-                <span>R$ 3,50</span>
+                <span>R$ 3.50</span>
               </div>
               <div>
                 <span>Total</span>
-                <span>R$ 33,20</span>
+                <span>R$ {(cartTotal + 3.5).toFixed(2)}</span>
               </div>
             </OrderResume>
-            <button type="submit">Confirmar Pedido</button>
+            <button type="submit" onClick={handleCartError}>
+              Confirmar Pedido
+            </button>
           </OrderFooter>
         </CoffeeOrderContainer>
       </form>

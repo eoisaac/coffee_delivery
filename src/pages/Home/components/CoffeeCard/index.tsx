@@ -28,18 +28,17 @@ export const CoffeeCard = ({
   const [coffeeAmount, setCoffeeAmount] = useState(1)
 
   const handleAddItemIntoCart = () => {
-    setCart([
-      ...cart,
-      {
-        id,
-        name,
-        price,
-        amount: coffeeAmount,
-        image,
-      },
-    ])
+    const coffeeInCart = cart.find((coffee) => id === coffee.id)
 
-    setCoffeeAmount(1)
+    setCart(
+      coffeeInCart
+        ? cart.map((coffee) => {
+            return coffee.id === coffeeInCart.id
+              ? { ...coffee, amount: coffee.amount + coffeeAmount }
+              : coffee
+          })
+        : [...cart, { id, name, image, price, amount: coffeeAmount }],
+    )
   }
 
   return (

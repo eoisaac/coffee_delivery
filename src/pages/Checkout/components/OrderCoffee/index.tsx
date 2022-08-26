@@ -1,5 +1,5 @@
 import { Trash } from 'phosphor-react'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Counter } from '../../../../components/Counter'
 import { OrderContext } from '../../../../context/OrderContext'
 import { Coffee } from '../../../Home/components/CoffeeCard'
@@ -21,6 +21,14 @@ export const OrderCoffee = ({ id, name, price, amount, image }: Coffee) => {
     const updatedCart = cart.filter((coffee) => coffee.id !== id)
     setCart(updatedCart)
   }
+
+  useEffect(() => {
+    setCart(
+      cart.map((coffee) => {
+        return coffee.id === id ? { ...coffee, amount: coffeeAmount } : coffee
+      }),
+    )
+  }, [coffeeAmount])
 
   return (
     <OrderCoffeeContainer>
