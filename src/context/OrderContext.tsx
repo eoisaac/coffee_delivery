@@ -1,5 +1,17 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react'
 import { Coffee } from '../pages/Home/components/CoffeeCard'
+import {
+  addCoffeeToCartAction,
+  removeCoffeeFromCartAction,
+  updateCoffeeAmountInCartAction,
+} from '../reducers/order/actions'
+import { orderReducer } from '../reducers/order/reducer'
 
 interface OrderContextProviderProps {
   children: ReactNode
@@ -8,7 +20,13 @@ interface OrderContextProviderProps {
 interface OrderContextType {
   cart: Coffee[]
   cartTotal: number
-  setCart: (cart: Coffee[]) => void
+  addCoffeeToCart: (coffee: Coffee) => void
+  removeCoffeeFromCart: (coffeeId: string) => void
+  updateCoffeeAmountInCart: (coffeeId: string, newCoffeAmount: number) => void
+}
+
+export interface OrderState {
+  cart: Coffee[]
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -16,8 +34,10 @@ export const OrderContext = createContext({} as OrderContextType)
 export const OrderContextProvider = ({
   children,
 }: OrderContextProviderProps) => {
-  const [cart, setCart] = useState<Coffee[]>([])
+  const [order, dispatch] = useReducer(orderReducer, { cart: [] })
+
   const [cartTotal, setCartTotal] = useState(0)
+  const { cart } = order
 
   useEffect(() => {
     setCartTotal(
@@ -27,8 +47,31 @@ export const OrderContextProvider = ({
     )
   }, [cart])
 
+  const addCoffeeToCart = (coffee: Coffee) => {
+    dispatch(addCoffeeToCartAction(coffee))
+  }
+
+  const removeCoffeeFromCart = (coffeeId: string) => {
+    dispatch(removeCoffeeFromCartAction(coffeeId))
+  }
+
+  const updateCoffeeAmountInCart = (
+    coffeeId: string,
+    newCoffeAmount: number,
+  ) => {
+    dispatch(updateCoffeeAmountInCartAction(coffeeId, newCoffeAmount))
+  }
+
   return (
-    <OrderContext.Provider value={{ cart, cartTotal, setCart }}>
+    <OrderContext.Provider
+      value={{
+        cart,
+        cartTotal,
+        addCoffeeToCart,
+        removeCoffeeFromCart,
+        updateCoffeeAmountInCart,
+      }}
+    >
       {children}
     </OrderContext.Provider>
   )

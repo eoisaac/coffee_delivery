@@ -24,23 +24,20 @@ export const CoffeeCard = ({
   image,
   price,
 }: CoffeeItem) => {
-  const { cart, setCart } = useContext(OrderContext)
+  const { cart, addCoffeeToCart } = useContext(OrderContext)
+
   const [coffeeAmount, setCoffeeAmount] = useState(1)
 
-  const handleAddItemIntoCart = () => {
-    const coffeeInCart = cart.find((coffee) => id === coffee.id)
-
-    setCart(
-      coffeeInCart
-        ? cart.map((coffee) => {
-            return coffee.id === coffeeInCart.id
-              ? { ...coffee, amount: coffee.amount + coffeeAmount }
-              : coffee
-          })
-        : [...cart, { id, name, image, price, amount: coffeeAmount }],
-    )
+  const handleAddCoffeeIntoCart = () => {
+    console.log('add')
+    addCoffeeToCart({
+      id,
+      name,
+      price,
+      image,
+      amount: coffeeAmount,
+    })
   }
-
   return (
     <CoffeeContainer>
       <img src={`./src/assets/${image}`} alt={`Foto do ${name}`} />
@@ -66,7 +63,7 @@ export const CoffeeCard = ({
             counterValue={coffeeAmount}
           />
 
-          <CartButton onClick={handleAddItemIntoCart}>
+          <CartButton onClick={handleAddCoffeeIntoCart}>
             <ShoppingCart size={22} weight="fill" />
           </CartButton>
         </BuyButtons>

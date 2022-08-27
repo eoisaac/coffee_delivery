@@ -13,22 +13,18 @@ import {
 } from './styles'
 
 export const OrderCoffee = ({ id, name, price, amount, image }: Coffee) => {
-  const { cart, setCart } = useContext(OrderContext)
+  const { cart, removeCoffeeFromCart, updateCoffeeAmountInCart } =
+    useContext(OrderContext)
 
   const [coffeeAmount, setCoffeeAmount] = useState(amount)
 
   const handleRemoveCoffeeFromCart = () => {
-    const updatedCart = cart.filter((coffee) => coffee.id !== id)
-    setCart(updatedCart)
+    removeCoffeeFromCart(id)
   }
 
   useEffect(() => {
-    setCart(
-      cart.map((coffee) => {
-        return coffee.id === id ? { ...coffee, amount: coffeeAmount } : coffee
-      }),
-    )
-  }, [cart, coffeeAmount, id, setCart])
+    updateCoffeeAmountInCart(id, coffeeAmount)
+  }, [coffeeAmount, id, updateCoffeeAmountInCart])
 
   return (
     <OrderCoffeeContainer>
