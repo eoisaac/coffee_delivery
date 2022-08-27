@@ -111,7 +111,7 @@ export const Checkout = () => {
             <OrderResume>
               <div>
                 <span>Total de itens</span>
-                <span>R$ {cartTotal.toFixed(2)}</span>
+                <span>R$ {(cartTotal || 0).toFixed(2)}</span>
               </div>
               <div>
                 <span>Entrega</span>
@@ -119,7 +119,7 @@ export const Checkout = () => {
               </div>
               <div>
                 <span>Total</span>
-                <span>R$ {(cartTotal + 3.5).toFixed(2)}</span>
+                <span>R$ {(cartTotal ? cartTotal + 3.5 : 0).toFixed(2)}</span>
               </div>
             </OrderResume>
             <button type="submit" onClick={handleCartError}>

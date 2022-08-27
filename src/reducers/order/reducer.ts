@@ -22,13 +22,14 @@ export const orderReducer = (state: OrderState, action: any) => {
       }
     }
 
-    case ActionTypes.REMOVE_COFFEE_FROM_CART:
+    case ActionTypes.REMOVE_COFFEE_FROM_CART: {
       return {
         ...state,
-        cart: [
-          state.cart.filter((coffee) => coffee.id !== action.payload.coffeeId),
-        ],
+        cart: state.cart.filter(
+          (coffee) => coffee.id !== action.payload.coffeeId,
+        ),
       }
+    }
 
     case ActionTypes.UPDATE_COFFEE_IN_CART: {
       return {

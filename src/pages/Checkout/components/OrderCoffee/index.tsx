@@ -24,7 +24,7 @@ export const OrderCoffee = ({ id, name, price, amount, image }: Coffee) => {
 
   useEffect(() => {
     updateCoffeeAmountInCart(id, coffeeAmount)
-  }, [coffeeAmount, id, updateCoffeeAmountInCart])
+  }, [coffeeAmount])
 
   return (
     <OrderCoffeeContainer>
@@ -32,7 +32,7 @@ export const OrderCoffee = ({ id, name, price, amount, image }: Coffee) => {
       <CoffeeData>
         <Header>
           <span>{name}</span>
-          <Price>R$ {price.toFixed(2)}</Price>
+          <Price>R$ {(price * coffeeAmount).toFixed(2)}</Price>
         </Header>
         <ButtonsWrap>
           <Counter
