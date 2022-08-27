@@ -19,9 +19,7 @@ import { OrderCoffee } from './components/OrderCoffee'
 import { Link } from 'react-router-dom'
 
 export const Checkout = () => {
-  const { cart, cartTotal } = useContext(OrderContext)
-
-  const [displayCartError, setDisplayCartError] = useState(false)
+  const { order, cart, cartTotal, concludeOrder } = useContext(OrderContext)
 
   const cartIsEmpty = cart.length <= 0
 
@@ -39,6 +37,9 @@ export const Checkout = () => {
     paymentMethod: zod.enum(['credit', 'debit', 'money'], {
       invalid_type_error: 'Selecione a forma de pagamento',
     }),
+    cartIsEmpty: zod.enum(['false'], {
+      invalid_type_error: 'Adicione itens ao seu carrinho',
+    }),
   })
 
   type OrderCheckoutFormData = zod.infer<typeof orderCheckoutFormSchema>
@@ -51,14 +52,24 @@ export const Checkout = () => {
   const { errors } = formState
   const orderCheckoutFormErrors = errors
 
-  const handleCartError = () => {
-    cartIsEmpty && setDisplayCartError(true)
-  }
-
-  const handleOrderCheckoutSubmit = (order: OrderCheckoutFormData) => {
+  const handleOrderCheckoutSubmit = (checkout: OrderCheckoutFormData) => {
+    const orderCheckout = {
+      cart,
+      paymentMethod: checkout.paymentMethod,
+      address: {
+        number: checkout.number,
+        cep: checkout.cep,
+        street: checkout.street,
+        complement: checkout.complement,
+        district: checkout.district,
+        state: checkout.state,
+      },
+    }
+    concludeOrder(orderCheckout)
     reset()
   }
 
+  console.log(order)
   return (
     <CheckoutContainer>
       <h1>Complete seu pedido</h1>
@@ -105,8 +116,10 @@ export const Checkout = () => {
           )}
 
           <OrderFooter>
-            {displayCartError && (
-              <ErrorMessage>Adicione itens ao seu carrinho</ErrorMessage>
+            {orderCheckoutFormErrors.cartIsEmpty && (
+              <ErrorMessage>
+                {orderCheckoutFormErrors.cartIsEmpty.message}
+              </ErrorMessage>
             )}
             <OrderResume>
               <div>
@@ -122,9 +135,7 @@ export const Checkout = () => {
                 <span>R$ {(cartTotal + 3.5).toFixed(2)}</span>
               </div>
             </OrderResume>
-            <button type="submit" onClick={handleCartError}>
-              Confirmar Pedido
-            </button>
+            <button type="submit">Confirmar Pedido</button>
           </OrderFooter>
         </CoffeeOrderContainer>
       </form>

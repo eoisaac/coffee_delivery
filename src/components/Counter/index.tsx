@@ -8,7 +8,7 @@ interface CounterProps {
   setAmount: (amount: number) => void
 }
 
-export const Counter = ({ size, setAmount, counterValue }: CounterProps) => {
+export const Counter = ({ size, counterValue, setAmount }: CounterProps) => {
   const [counter, setCounter] = useState(counterValue)
 
   const handleAmountBtns = {

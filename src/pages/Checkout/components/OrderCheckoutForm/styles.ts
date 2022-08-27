@@ -166,3 +166,7 @@ export const Input = styled.div`
     }
   }
 `
+
+export const CartIsEmptyInpt = styled.input`
+  display: none;
+`

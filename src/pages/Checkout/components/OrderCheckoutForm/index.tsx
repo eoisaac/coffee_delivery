@@ -8,9 +8,12 @@ import {
   ErrorMessage,
   PaymentMethodsContainer,
   PaymentMethod,
+  CartIsEmptyInpt,
 } from './styles'
 import { MapPin, CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
+import { useContext } from 'react'
+import { OrderContext } from '../../../../contexts/OrderContext'
 
 interface OrderCheckoutFormProps {
   formErrors: any
@@ -18,6 +21,9 @@ interface OrderCheckoutFormProps {
 
 export const OrderCheckoutForm = ({ formErrors }: OrderCheckoutFormProps) => {
   const { register } = useFormContext()
+  const { cart } = useContext(OrderContext)
+
+  const cartIsEmpty = cart.length <= 0
 
   return (
     <>
@@ -183,6 +189,13 @@ export const OrderCheckoutForm = ({ formErrors }: OrderCheckoutFormProps) => {
           {formErrors.paymentMethod && (
             <ErrorMessage>{formErrors.paymentMethod.message}</ErrorMessage>
           )}
+
+          <CartIsEmptyInpt
+            type="checkbox"
+            value="false"
+            {...register('cartIsEmpty', { required: true })}
+            checked={!cartIsEmpty}
+          />
         </FieldsetContainer>
       </DeliveryContainer>
     </>

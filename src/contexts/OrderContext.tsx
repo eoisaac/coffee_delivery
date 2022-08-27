@@ -8,25 +8,38 @@ import {
 import { Coffee } from '../pages/Home/components/CoffeeCard'
 import {
   addCoffeeToCartAction,
+  concludeOrderAction,
   removeCoffeeFromCartAction,
   updateCoffeeAmountInCartAction,
 } from '../reducers/order/actions'
 import { orderReducer } from '../reducers/order/reducer'
+
+export interface OrderState {
+  cart: Coffee[]
+  paymentMethod: string
+  address: {
+    number: string
+    cep: string
+    street: string
+    complement: string
+    district: string
+    city: string
+    state: string
+  }
+}
 
 interface OrderContextProviderProps {
   children: ReactNode
 }
 
 interface OrderContextType {
+  order: OrderState
   cart: Coffee[]
   cartTotal: number
   addCoffeeToCart: (coffee: Coffee) => void
   removeCoffeeFromCart: (coffeeId: string) => void
   updateCoffeeAmountInCart: (coffeeId: string, newCoffeAmount: number) => void
-}
-
-export interface OrderState {
-  cart: Coffee[]
+  concludeOrder: (orderCheckout: any) => void
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -34,14 +47,26 @@ export const OrderContext = createContext({} as OrderContextType)
 export const OrderContextProvider = ({
   children,
 }: OrderContextProviderProps) => {
-  const [order, dispatch] = useReducer(orderReducer, { cart: [] })
+  const [order, dispatch] = useReducer(orderReducer, {
+    cart: [],
+    paymentMethod: '',
+    address: {
+      number: '',
+      cep: '',
+      street: '',
+      complement: '',
+      district: '',
+      city: '',
+      state: '',
+    },
+  })
 
   const [cartTotal, setCartTotal] = useState(0)
   const { cart } = order
 
   useEffect(() => {
     setCartTotal(
-      cart.reduce((total, coffee) => {
+      cart.reduce((total: number, coffee: Coffee) => {
         return (total += coffee.price * coffee.amount)
       }, 0),
     )
@@ -62,14 +87,19 @@ export const OrderContextProvider = ({
     dispatch(updateCoffeeAmountInCartAction(coffeeId, newCoffeAmount))
   }
 
+  const concludeOrder = (orderCheckout: OrderState) =>
+    dispatch(concludeOrderAction(orderCheckout))
+
   return (
     <OrderContext.Provider
       value={{
+        order,
         cart,
         cartTotal,
         addCoffeeToCart,
         removeCoffeeFromCart,
         updateCoffeeAmountInCart,
+        concludeOrder,
       }}
     >
       {children}
