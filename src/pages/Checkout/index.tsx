@@ -79,7 +79,7 @@ export const Checkout = () => {
 
           {cartIsEmpty ? (
             <EmptyAlert>
-              <ShoppingCart size={50} />
+              <ShoppingCart size={60} />
               <div>
                 <strong>Oops... Seu carrinho está vazio!</strong>
                 <Link to="/">
