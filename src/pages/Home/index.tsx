@@ -1,4 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { useContext } from 'react'
+import { EnvContext } from '../../contexts/EnvContext'
 import { coffeesList } from '../../data/coffees_data'
 import { CoffeeCard } from './components/CoffeeCard'
 import {
@@ -14,6 +16,8 @@ import {
 } from './styles'
 
 export const Home = () => {
+  const { imagesPath } = useContext(EnvContext)
+
   return (
     <HomeContainer>
       <IntroContainer>
@@ -58,7 +62,7 @@ export const Home = () => {
           </ItemsGrid>
         </IntroContent>
 
-        <img src="./src/assets/images/coffee_delivery_home.svg" alt="" />
+        <img src={`${imagesPath}/coffee_delivery_home.svg`} alt="" />
       </IntroContainer>
 
       <CoffeesContainer>

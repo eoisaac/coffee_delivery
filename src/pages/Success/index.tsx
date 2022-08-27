@@ -1,4 +1,6 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useContext } from 'react'
+import { EnvContext } from '../../contexts/EnvContext'
 import {
   Icon,
   OrderContainer,
@@ -9,6 +11,7 @@ import {
 } from './styles'
 
 export const Success = () => {
+  const { imagesPath } = useContext(EnvContext)
   return (
     <SuccessContainer>
       <SuccessMessage>
@@ -55,7 +58,7 @@ export const Success = () => {
           </OrderRow>
         </OrderContainer>
 
-        <img src="./src/assets/images/coffee_delivery_success.svg" alt="" />
+        <img src={`${imagesPath}/coffee_delivery_success.svg`} alt="" />
       </Wrapper>
     </SuccessContainer>
   )

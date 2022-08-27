@@ -1,4 +1,4 @@
-import { OrderState } from '../../context/OrderContext'
+import { OrderState } from '../../contexts/OrderContext'
 import { ActionTypes } from './actions'
 
 export const orderReducer = (state: OrderState, action: any) => {

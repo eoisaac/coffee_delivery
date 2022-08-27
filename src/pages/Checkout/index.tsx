@@ -14,7 +14,7 @@ import * as zod from 'zod'
 import { Coffee, ShoppingCart } from 'phosphor-react'
 import { ErrorMessage, Header } from './components/OrderCheckoutForm/styles'
 import { useContext, useState } from 'react'
-import { OrderContext } from '../../context/OrderContext'
+import { OrderContext } from '../../contexts/OrderContext'
 import { OrderCoffee } from './components/OrderCoffee'
 import { Link } from 'react-router-dom'
 
@@ -106,12 +106,12 @@ export const Checkout = () => {
 
           <OrderFooter>
             {displayCartError && (
-              <ErrorMessage>Adicione um item ao seu carrinho</ErrorMessage>
+              <ErrorMessage>Adicione itens ao seu carrinho</ErrorMessage>
             )}
             <OrderResume>
               <div>
                 <span>Total de itens</span>
-                <span>R$ {(cartTotal || 0).toFixed(2)}</span>
+                <span>R$ {cartTotal.toFixed(2)}</span>
               </div>
               <div>
                 <span>Entrega</span>
@@ -119,7 +119,7 @@ export const Checkout = () => {
               </div>
               <div>
                 <span>Total</span>
-                <span>R$ {(cartTotal ? cartTotal + 3.5 : 0).toFixed(2)}</span>
+                <span>R$ {(cartTotal + 3.5).toFixed(2)}</span>
               </div>
             </OrderResume>
             <button type="submit" onClick={handleCartError}>

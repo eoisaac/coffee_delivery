@@ -10,7 +10,8 @@ import { CoffeeItem } from '../../../../data/coffees_data'
 import { ShoppingCart } from 'phosphor-react'
 import { Counter } from '../../../../components/Counter'
 import { useContext, useState } from 'react'
-import { OrderContext } from '../../../../context/OrderContext'
+import { OrderContext } from '../../../../contexts/OrderContext'
+import { EnvContext } from '../../../../contexts/EnvContext'
 
 export interface Coffee extends Omit<CoffeeItem, 'description' | 'tags'> {
   amount: number
@@ -24,12 +25,12 @@ export const CoffeeCard = ({
   image,
   price,
 }: CoffeeItem) => {
-  const { cart, addCoffeeToCart } = useContext(OrderContext)
+  const { imagesPath } = useContext(EnvContext)
+  const { addCoffeeToCart } = useContext(OrderContext)
 
   const [coffeeAmount, setCoffeeAmount] = useState(1)
 
   const handleAddCoffeeIntoCart = () => {
-    console.log('add')
     addCoffeeToCart({
       id,
       name,
@@ -40,7 +41,7 @@ export const CoffeeCard = ({
   }
   return (
     <CoffeeContainer>
-      <img src={`./src/assets/${image}`} alt={`Foto do ${name}`} />
+      <img src={`${imagesPath}/${image}`} alt={`Foto do ${name}`} />
 
       <TagWrapper>
         {tags.map((tag) => (
