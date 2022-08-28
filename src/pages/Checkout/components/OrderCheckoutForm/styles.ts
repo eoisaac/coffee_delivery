@@ -81,11 +81,11 @@ export const PaymentMethod = styled.label`
     display: inline-flex;
     gap: 0.75rem;
     align-items: center;
-    text-transform: uppercase;
+    padding: 1rem;
     line-height: 0;
     font-size: 0.75rem;
-    padding: 1rem;
     color: ${(props) => props.theme['base-text']};
+    text-transform: uppercase;
     transition: all 0.1s ease-in-out;
     border-radius: 6px;
     border: solid 1px transparent;

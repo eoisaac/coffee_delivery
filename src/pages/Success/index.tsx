@@ -1,6 +1,7 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { useContext } from 'react'
 import { EnvContext } from '../../contexts/EnvContext'
+import { OrderContext } from '../../contexts/OrderContext'
 import {
   Icon,
   OrderContainer,
@@ -12,6 +13,7 @@ import {
 
 export const Success = () => {
   const { imagesPath } = useContext(EnvContext)
+  const { order } = useContext(OrderContext)
   return (
     <SuccessContainer>
       <SuccessMessage>
@@ -27,9 +29,14 @@ export const Success = () => {
             </Icon>
             <div>
               <p>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em
+                <strong>
+                  {` ${order.address.street}, ${order.address.number}`}
+                </strong>
               </p>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>
+                {`${order.address.district} - ${order.address.city}, ${order.address.state}`}
+              </p>
             </div>
           </OrderRow>
 
@@ -52,7 +59,7 @@ export const Success = () => {
             <div>
               <p>Pagamento na entrega</p>
               <p>
-                <strong>Cartão de crédito</strong>
+                <strong>{order.paymentMethod}</strong>
               </p>
             </div>
           </OrderRow>

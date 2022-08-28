@@ -16,10 +16,11 @@ import { ErrorMessage, Header } from './components/OrderCheckoutForm/styles'
 import { useContext, useState } from 'react'
 import { OrderContext } from '../../contexts/OrderContext'
 import { OrderCoffee } from './components/OrderCoffee'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Checkout = () => {
   const { order, cart, cartTotal, concludeOrder } = useContext(OrderContext)
+  const navigate = useNavigate()
 
   const cartIsEmpty = cart.length <= 0
 
@@ -66,10 +67,13 @@ export const Checkout = () => {
       },
     }
     concludeOrder(orderCheckout)
+
+    setTimeout(() => {
+      navigate('/success')
+    }, 2000)
     reset()
   }
 
-  console.log(order)
   return (
     <CheckoutContainer>
       <h1>Complete seu pedido</h1>
