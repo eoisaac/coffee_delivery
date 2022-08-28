@@ -5,6 +5,7 @@ export const FieldsetContainer = styled.fieldset`
   padding: 1rem;
   border-radius: 6px;
   background-color: ${(props) => props.theme['base-card']};
+  animation: leftToRight 1s;
 
   @media (min-width: 768px) {
     padding: 2.5rem;

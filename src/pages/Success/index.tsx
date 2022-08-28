@@ -17,6 +17,12 @@ export const Success = () => {
   const { order } = useContext(OrderContext)
   const navigate = useNavigate()
 
+  const PaymentMethods = {
+    credit: 'Cartão de crédito',
+    debit: 'Cartão de débito',
+    money: 'Dinheiro',
+  }
+
   useEffect(() => {
     !order.isConcluded && navigate('/')
   }, [order.isConcluded, navigate])
@@ -66,7 +72,7 @@ export const Success = () => {
             <div>
               <p>Pagamento na entrega</p>
               <p>
-                <strong>{order.paymentMethod}</strong>
+                <strong>{PaymentMethods[order.paymentMethod]}</strong>
               </p>
             </div>
           </OrderRow>

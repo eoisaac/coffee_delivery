@@ -34,6 +34,7 @@ export const OrderCoffee = ({ id, name, price, amount, image }: Coffee) => {
         src={`${imagesPath}/${image}`}
         alt={`Foto do ${name}`}
         loading="lazy"
+        title={name}
       />
       <CoffeeData>
         <Header>

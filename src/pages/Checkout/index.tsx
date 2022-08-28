@@ -79,7 +79,7 @@ export const Checkout = () => {
       navigate('/success')
 
       setIsLoading(false)
-    }, 2000)
+    }, 2500)
 
     reset()
   }

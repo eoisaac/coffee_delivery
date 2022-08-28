@@ -46,11 +46,14 @@ export const CoffeeCard = ({
         src={`${imagesPath}/${image}`}
         alt={`Foto do ${name}`}
         loading="lazy"
+        title={name}
       />
 
       <TagWrapper>
         {tags.map((tag) => (
-          <span key={`${id}_${tag}`}>{tag}</span>
+          <span key={`${id}_${tag}`} title={tag}>
+            {tag}
+          </span>
         ))}
       </TagWrapper>
 

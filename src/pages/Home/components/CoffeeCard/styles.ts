@@ -11,6 +11,7 @@ export const CoffeeContainer = styled.li`
   padding: 0 1.5rem 1.25rem 1.5rem;
   text-align: center;
   border-radius: 6px 36px;
+  animation: bottomToTop 1s;
   background-color: ${(props) => props.theme['base-card']};
 
   img {

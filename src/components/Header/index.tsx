@@ -17,7 +17,7 @@ export const Header = () => {
 
   return (
     <HeaderContainer>
-      <h2>
+      <h2 title="Coffee Delivery">
         <Link to="/">
           <img
             src={`${imagesPath}/coffee_delivery_logo.svg`}

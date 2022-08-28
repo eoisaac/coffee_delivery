@@ -7,7 +7,6 @@ export const CheckoutContainer = styled.main`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-
   h1 {
     margin-bottom: 1rem;
     font-size: clamp(1.5rem, 5vw, 2rem);
@@ -33,6 +32,7 @@ export const CoffeeOrderContainer = styled(FieldsetContainer)`
   display: flex;
   flex-direction: column;
   border-radius: 6px;
+  animation: rightToLeft 1s;
 
   @media (min-width: 868px) {
     border-radius: 6px 44px;

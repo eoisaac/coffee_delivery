@@ -19,6 +19,7 @@ export const IntroContainer = styled.section`
   img {
     width: clamp(14rem, 35vw, 476px);
     height: clamp(10.6rem, 25vw, 347.6px);
+    animation: rightToLeft 1s;
   }
 
   @media (min-width: 768px) {
@@ -33,6 +34,7 @@ export const IntroContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  animation: leftToRight 1s;
 `
 
 export const ContentTitle = styled.div`

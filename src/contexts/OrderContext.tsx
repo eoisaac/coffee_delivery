@@ -16,7 +16,7 @@ import { orderReducer } from '../reducers/order/reducer'
 
 export interface OrderState {
   cart: Coffee[]
-  paymentMethod: string
+  paymentMethod: 'credit' | 'debit' | 'money'
   deliveryFee: number
   address: {
     number: string
@@ -32,7 +32,7 @@ export interface OrderState {
 
 const defaultOrder: OrderState = {
   cart: [],
-  paymentMethod: '',
+  paymentMethod: 'credit',
   deliveryFee: 0,
   address: {
     number: '',

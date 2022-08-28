@@ -11,6 +11,7 @@ export const SuccessContainer = styled.main`
 
 export const SuccessMessage = styled.div`
   padding-bottom: clamp(1rem, 8vw, 2.5rem);
+  animation: topToBottom 1s;
 
   h1 {
     font-family: 'Baloo 2', cursive;
@@ -40,6 +41,7 @@ export const Wrapper = styled.div`
     flex: 1;
     height: auto;
     width: clamp(16rem, 50vw, 492px);
+    animation: topToBottom 1s;
   }
 
   @media (min-width: 768px) {
@@ -48,6 +50,7 @@ export const Wrapper = styled.div`
 `
 
 export const OrderContainer = styled(SuccessMessage)`
+  animation: leftToRight 1s;
   flex: 1;
   height: 100%;
   display: flex;

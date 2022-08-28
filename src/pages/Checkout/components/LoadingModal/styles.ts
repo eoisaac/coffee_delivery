@@ -23,6 +23,7 @@ export const ModalContainer = styled.div`
   gap: 0.5rem;
   padding: 1rem;
   text-align: center;
+  animation: topToBottom 1s;
   border-radius: 6px 44px;
   background-color: ${(props) => props.theme.background};
 
