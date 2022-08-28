@@ -76,8 +76,8 @@ export const OrderContextProvider = ({
 
   useEffect(() => {
     setCartTotal(
-      cart.reduce((total: number, coffee: Coffee) => {
-        return (total += coffee.price * coffee.amount)
+      (cart as Coffee[]).reduce((total, coffee) => {
+        return (total += Number(coffee.price) * Number(coffee.amount))
       }, 0),
     )
 

@@ -8,6 +8,6 @@ export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 1rem 1rem 1rem;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: ${(props) => props.theme.background};
 `
