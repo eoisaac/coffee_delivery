@@ -19,10 +19,9 @@ import { OrderCoffee } from './components/OrderCoffee'
 import { Link, useNavigate } from 'react-router-dom'
 
 export const Checkout = () => {
-  const { order, cart, cartTotal, concludeOrder } = useContext(OrderContext)
+  const { cart, cartIsEmpty, cartTotal, deliveryFee, concludeOrder } =
+    useContext(OrderContext)
   const navigate = useNavigate()
-
-  const cartIsEmpty = cart.length <= 0
 
   const orderCheckoutFormSchema = zod.object({
     cep: zod.string().min(8, 'O CEP inválido. Mínimo 8 caracteres'),
@@ -57,6 +56,7 @@ export const Checkout = () => {
     const orderCheckout = {
       cart,
       paymentMethod: checkout.paymentMethod,
+      deliveryFee,
       address: {
         cep: checkout.cep,
         state: checkout.state,
@@ -98,7 +98,7 @@ export const Checkout = () => {
               <ShoppingCart size={60} />
               <div>
                 <strong>Oops... Seu carrinho está vazio!</strong>
-                <Link to="/">
+                <Link to="/" title="Ver cafés">
                   <AlertButton type="button">Ver cafés</AlertButton>
                 </Link>
               </div>
@@ -133,14 +133,16 @@ export const Checkout = () => {
               </div>
               <div>
                 <span>Entrega</span>
-                <span>R$ 3.50</span>
+                <span>R$ {deliveryFee.toFixed(2)}</span>
               </div>
               <div>
                 <span>Total</span>
-                <span>R$ {(cartTotal + 3.5).toFixed(2)}</span>
+                <span>R$ {(cartTotal + deliveryFee).toFixed(2)}</span>
               </div>
             </OrderResume>
-            <button type="submit">Confirmar Pedido</button>
+            <button type="submit" title="Confirmar pedido">
+              Confirmar Pedido
+            </button>
           </OrderFooter>
         </CoffeeOrderContainer>
       </form>

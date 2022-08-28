@@ -18,6 +18,7 @@ export const IntroContainer = styled.section`
 
   img {
     width: clamp(14rem, 35vw, 476px);
+    height: clamp(10.6rem, 25vw, 347.6px);
   }
 
   @media (min-width: 768px) {
@@ -53,14 +54,14 @@ export const ContentTitle = styled.div`
   }
 `
 
-export const ItemsGrid = styled.ul`
+export const ItemsGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   gap: 1.25rem 2.5rem;
 `
 
-export const ItemsWrap = styled.div`
+export const ItemsWrap = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;

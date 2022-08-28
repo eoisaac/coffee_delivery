@@ -17,6 +17,7 @@ import { orderReducer } from '../reducers/order/reducer'
 export interface OrderState {
   cart: Coffee[]
   paymentMethod: string
+  deliveryFee: number
   address: {
     number: string
     cep: string
@@ -28,9 +29,10 @@ export interface OrderState {
   }
 }
 
-const defaultOrder = {
+const defaultOrder: OrderState = {
   cart: [],
   paymentMethod: '',
+  deliveryFee: 0,
   address: {
     number: '',
     cep: '',
@@ -50,6 +52,8 @@ interface OrderContextType {
   order: OrderState
   cart: Coffee[]
   cartTotal: number
+  deliveryFee: number
+  cartIsEmpty: boolean
   addCoffeeToCart: (coffee: Coffee) => void
   removeCoffeeFromCart: (coffeeId: string) => void
   updateCoffeeAmountInCart: (coffeeId: string, newCoffeAmount: number) => void
@@ -72,7 +76,10 @@ export const OrderContextProvider = ({
   })
 
   const [cartTotal, setCartTotal] = useState(0)
+  const [deliveryFee, setDeliveryFee] = useState(0)
+
   const { cart } = order
+  const cartIsEmpty = cart.length <= 0
 
   useEffect(() => {
     setCartTotal(
@@ -84,6 +91,12 @@ export const OrderContextProvider = ({
     const cartStateAsJSON = JSON.stringify(cart)
     localStorage.setItem('@coffee-delivery:cart-state-1.0.0', cartStateAsJSON)
   }, [cart])
+
+  useEffect(() => {
+    cartIsEmpty
+      ? setDeliveryFee(0)
+      : setDeliveryFee(Math.random() * (5 - 2) + 2)
+  }, [cartIsEmpty])
 
   const addCoffeeToCart = (coffee: Coffee) => {
     dispatch(addCoffeeToCartAction(coffee))
@@ -108,7 +121,9 @@ export const OrderContextProvider = ({
       value={{
         order,
         cart,
+        cartIsEmpty,
         cartTotal,
+        deliveryFee,
         addCoffeeToCart,
         removeCoffeeFromCart,
         updateCoffeeAmountInCart,

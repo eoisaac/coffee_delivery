@@ -12,6 +12,7 @@ import { Counter } from '../../../../components/Counter'
 import { useContext, useState } from 'react'
 import { OrderContext } from '../../../../contexts/OrderContext'
 import { EnvContext } from '../../../../contexts/EnvContext'
+import { SrOnly } from '../../../../components/Header/styles'
 
 export interface Coffee extends Omit<CoffeeItem, 'description' | 'tags'> {
   amount: number
@@ -41,7 +42,11 @@ export const CoffeeCard = ({
   }
   return (
     <CoffeeContainer>
-      <img src={`${imagesPath}/${image}`} alt={`Foto do ${name}`} />
+      <img
+        src={`${imagesPath}/${image}`}
+        alt={`Foto do ${name}`}
+        loading="lazy"
+      />
 
       <TagWrapper>
         {tags.map((tag) => (
@@ -49,7 +54,7 @@ export const CoffeeCard = ({
         ))}
       </TagWrapper>
 
-      <h3>{name}</h3>
+      <strong>{name}</strong>
       <p>{description}</p>
 
       <BuyContainer>
@@ -64,8 +69,12 @@ export const CoffeeCard = ({
             counterValue={coffeeAmount}
           />
 
-          <CartButton onClick={handleAddCoffeeIntoCart}>
+          <CartButton
+            onClick={handleAddCoffeeIntoCart}
+            title="Adicionar ao carrinho"
+          >
             <ShoppingCart size={22} weight="fill" />
+            <SrOnly>Adicionar ao carrinho</SrOnly>
           </CartButton>
         </BuyButtons>
       </BuyContainer>

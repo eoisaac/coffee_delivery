@@ -20,7 +20,7 @@ export const CoffeeContainer = styled.li`
     top: -20px;
   }
 
-  h3 {
+  strong {
     font-size: 1.25rem;
     font-weight: 700;
     font-family: 'Baloo 2', cursive;

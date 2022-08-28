@@ -14,6 +14,7 @@ import {
 export const Success = () => {
   const { imagesPath } = useContext(EnvContext)
   const { order } = useContext(OrderContext)
+
   return (
     <SuccessContainer>
       <SuccessMessage>
@@ -65,7 +66,12 @@ export const Success = () => {
           </OrderRow>
         </OrderContainer>
 
-        <img src={`${imagesPath}/coffee_delivery_success.svg`} alt="" />
+        <img
+          src={`${imagesPath}/coffee_delivery_success.svg`}
+          alt="Homem de cabelos pretos, usando camisa amarela e 
+          calça verde, pilotando uma lambreta de cor roxa"
+          loading="lazy"
+        />
       </Wrapper>
     </SuccessContainer>
   )

@@ -143,7 +143,7 @@ export const OrderCheckoutForm = ({ formErrors }: OrderCheckoutFormProps) => {
           </Header>
 
           <PaymentMethodsContainer>
-            <PaymentMethod htmlFor="credit">
+            <PaymentMethod htmlFor="credit" title="Cartão de crédito">
               <input
                 type="radio"
                 {...register('paymentMethod', { required: true })}
@@ -157,7 +157,7 @@ export const OrderCheckoutForm = ({ formErrors }: OrderCheckoutFormProps) => {
                 Cartão de Crédito
               </div>
             </PaymentMethod>
-            <PaymentMethod htmlFor="debit">
+            <PaymentMethod htmlFor="debit" title="Cartão de débito">
               <input
                 type="radio"
                 {...register('paymentMethod')}
@@ -171,7 +171,7 @@ export const OrderCheckoutForm = ({ formErrors }: OrderCheckoutFormProps) => {
                 Cartão de Débito
               </div>
             </PaymentMethod>
-            <PaymentMethod htmlFor="money">
+            <PaymentMethod htmlFor="money" title="Dinheiro">
               <input
                 type="radio"
                 {...register('paymentMethod')}

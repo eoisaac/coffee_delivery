@@ -8,14 +8,12 @@ import {
   CartButton,
   CitySelect,
   HeaderContainer,
-  SrOnlyHeaderTitle,
+  SrOnly,
 } from './styles'
 
 export const Header = () => {
   const { imagesPath } = useContext(EnvContext)
-  const { cart } = useContext(OrderContext)
-
-  const cartIsEmpty = cart.length <= 0
+  const { cart, cartIsEmpty } = useContext(OrderContext)
 
   return (
     <HeaderContainer>
@@ -23,23 +21,26 @@ export const Header = () => {
         <Link to="/">
           <img
             src={`${imagesPath}/coffee_delivery_logo.svg`}
-            alt="Copo de café roxo com 'Coffee Delivery' escrito ao lado na cor marrom"
+            alt="Copo de café roxo com 'Coffee Delivery' 
+            escrito ao lado na cor marrom"
           />
-          <SrOnlyHeaderTitle>Coffee Delivery</SrOnlyHeaderTitle>
+          <SrOnly>Coffee Delivery</SrOnly>
         </Link>
       </h2>
 
       <div>
-        <CitySelect>
+        <CitySelect title="Selecionar cidade">
           <MapPin size={22} weight="fill" /> Ouro Branco, MG
+          <SrOnly>Selecione sua cidade</SrOnly>
         </CitySelect>
 
         <nav>
-          <NavLink to="/checkout">
+          <NavLink to="/checkout" title="Ver carrinho">
             <CartButton type="button">
               {cartIsEmpty || <ButtonBadge>{cart.length}</ButtonBadge>}
 
               <ShoppingCart size={22} weight="fill" />
+              <SrOnly>Ver carrinho</SrOnly>
             </CartButton>
           </NavLink>
         </nav>

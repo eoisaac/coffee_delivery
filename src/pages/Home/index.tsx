@@ -62,7 +62,13 @@ export const Home = () => {
           </ItemsGrid>
         </IntroContent>
 
-        <img src={`${imagesPath}/coffee_delivery_home.svg`} alt="" />
+        <img
+          src={`${imagesPath}/coffee_delivery_home.svg`}
+          alt="Copo de café branco, com a logo da Coffee Delivery. 
+          No fundo, de cor amarela, contém alguns grãos de café e 
+          equipamentos para preparo"
+          loading="lazy"
+        />
       </IntroContainer>
 
       <CoffeesContainer>

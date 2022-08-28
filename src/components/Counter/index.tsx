@@ -25,13 +25,21 @@ export const Counter = ({ size, counterValue, setAmount }: CounterProps) => {
 
   return (
     <CounterContainer size={size}>
-      <button type="button" onClick={handleAmountBtns.decrement}>
+      <button
+        type="button"
+        onClick={handleAmountBtns.decrement}
+        title="Adicionar item"
+      >
         <Minus weight="bold" />
       </button>
 
       <div>{counter}</div>
 
-      <button type="button" onClick={handleAmountBtns.increment}>
+      <button
+        type="button"
+        onClick={handleAmountBtns.increment}
+        title="Remover item"
+      >
         <Plus weight="bold" />
       </button>
     </CounterContainer>

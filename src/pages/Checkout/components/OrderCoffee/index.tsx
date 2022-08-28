@@ -30,7 +30,11 @@ export const OrderCoffee = ({ id, name, price, amount, image }: Coffee) => {
 
   return (
     <OrderCoffeeContainer>
-      <img src={`${imagesPath}/${image}`} alt={`Foto do ${name}`} />
+      <img
+        src={`${imagesPath}/${image}`}
+        alt={`Foto do ${name}`}
+        loading="lazy"
+      />
       <CoffeeData>
         <Header>
           <span>{name}</span>
@@ -42,7 +46,11 @@ export const OrderCoffee = ({ id, name, price, amount, image }: Coffee) => {
             setAmount={setCoffeeAmount}
             counterValue={coffeeAmount}
           />
-          <RemoveButton type="button" onClick={handleRemoveCoffeeFromCart}>
+          <RemoveButton
+            type="button"
+            onClick={handleRemoveCoffeeFromCart}
+            title="Remover do carrinho"
+          >
             <Trash size={16} />
             <span>Remover</span>
           </RemoveButton>

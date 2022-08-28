@@ -15,9 +15,14 @@ export const HeaderContainer = styled.header`
     align-items: center;
     gap: 0.75rem;
   }
+
+  img {
+    width: 85px;
+    height: 40px;
+  }
 `
 
-export const SrOnlyHeaderTitle = styled.span`
+export const SrOnly = styled.span`
   position: absolute;
   width: 1px;
   height: 1px;
