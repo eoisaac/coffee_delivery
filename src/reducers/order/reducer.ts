@@ -45,7 +45,7 @@ export const orderReducer = (state: OrderState, action: any) => {
     case ActionTypes.CONCLUDE_ORDER:
       return {
         ...state,
-        cart: action.payload.orderCheckout.cart,
+        cart: [],
         paymentMethod: action.payload.orderCheckout.paymentMethod,
         address: {
           ...action.payload.orderCheckout.address,

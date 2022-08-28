@@ -58,17 +58,18 @@ export const Checkout = () => {
       cart,
       paymentMethod: checkout.paymentMethod,
       address: {
-        number: checkout.number,
         cep: checkout.cep,
-        street: checkout.street,
-        complement: checkout.complement,
-        district: checkout.district,
         state: checkout.state,
+        city: checkout.city,
+        district: checkout.district,
+        street: checkout.street,
+        number: checkout.number,
+        complement: checkout.complement,
       },
     }
-    concludeOrder(orderCheckout)
 
     setTimeout(() => {
+      concludeOrder(orderCheckout)
       navigate('/success')
     }, 2000)
     reset()
