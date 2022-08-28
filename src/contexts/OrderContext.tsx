@@ -47,19 +47,40 @@ export const OrderContext = createContext({} as OrderContextType)
 export const OrderContextProvider = ({
   children,
 }: OrderContextProviderProps) => {
-  const [order, dispatch] = useReducer(orderReducer, {
-    cart: [],
-    paymentMethod: '',
-    address: {
-      number: '',
-      cep: '',
-      street: '',
-      complement: '',
-      district: '',
-      city: '',
-      state: '',
+  const [order, dispatch] = useReducer(
+    orderReducer,
+    {
+      cart: [],
+      paymentMethod: '',
+      address: {
+        number: '',
+        cep: '',
+        street: '',
+        complement: '',
+        district: '',
+        city: '',
+        state: '',
+      },
     },
-  })
+    () => {
+      const storedCartStateAsJSON = localStorage.getItem(
+        '@coffee-delivery:cart-state-1.0.0',
+      )
+      return {
+        cart: storedCartStateAsJSON ? JSON.parse(storedCartStateAsJSON) : [],
+        paymentMethod: '',
+        address: {
+          number: '',
+          cep: '',
+          street: '',
+          complement: '',
+          district: '',
+          city: '',
+          state: '',
+        },
+      }
+    },
+  )
 
   const [cartTotal, setCartTotal] = useState(0)
   const { cart } = order
@@ -70,6 +91,9 @@ export const OrderContextProvider = ({
         return (total += coffee.price * coffee.amount)
       }, 0),
     )
+
+    const cartStateAsJSON = JSON.stringify(cart)
+    localStorage.setItem('@coffee-delivery:cart-state-1.0.0', cartStateAsJSON)
   }, [cart])
 
   const addCoffeeToCart = (coffee: Coffee) => {
