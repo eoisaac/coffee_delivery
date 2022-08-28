@@ -50,6 +50,7 @@ export const orderReducer = (state: OrderState, action: any) => {
         address: {
           ...action.payload.orderCheckout.address,
         },
+        isConcluded: true,
       }
 
     default:

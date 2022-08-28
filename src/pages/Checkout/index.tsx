@@ -66,6 +66,7 @@ export const Checkout = () => {
         number: checkout.number,
         complement: checkout.complement,
       },
+      isConcluded: false,
     }
 
     setTimeout(() => {

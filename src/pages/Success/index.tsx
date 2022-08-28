@@ -1,5 +1,6 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { EnvContext } from '../../contexts/EnvContext'
 import { OrderContext } from '../../contexts/OrderContext'
 import {
@@ -14,6 +15,11 @@ import {
 export const Success = () => {
   const { imagesPath } = useContext(EnvContext)
   const { order } = useContext(OrderContext)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    !order.isConcluded && navigate('/')
+  }, [order.isConcluded, navigate])
 
   return (
     <SuccessContainer>

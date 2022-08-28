@@ -27,6 +27,7 @@ export interface OrderState {
     city: string
     state: string
   }
+  isConcluded: boolean
 }
 
 const defaultOrder: OrderState = {
@@ -42,6 +43,7 @@ const defaultOrder: OrderState = {
     city: '',
     state: '',
   },
+  isConcluded: false,
 }
 
 interface OrderContextProviderProps {
