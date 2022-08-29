@@ -72,6 +72,8 @@ export const Checkout = () => {
       isConcluded: false,
     }
 
+    if (cartIsEmpty) return
+
     setIsLoading(true)
 
     setTimeout(() => {
