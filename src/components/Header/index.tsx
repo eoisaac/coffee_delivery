@@ -1,7 +1,6 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { EnvContext } from '../../contexts/EnvContext'
 import { OrderContext } from '../../contexts/OrderContext'
 import {
   ButtonBadge,
@@ -12,7 +11,6 @@ import {
 } from './styles'
 
 export const Header = () => {
-  const { imagesPath } = useContext(EnvContext)
   const { cart, cartIsEmpty } = useContext(OrderContext)
 
   return (
@@ -20,7 +18,7 @@ export const Header = () => {
       <h2 title="Coffee Delivery">
         <Link to="/">
           <img
-            src={`${imagesPath}/coffee_delivery_logo.svg`}
+            src={`/images/coffee_delivery_logo.svg`}
             alt="Copo de café roxo com 'Coffee Delivery' 
             escrito ao lado na cor marrom"
           />

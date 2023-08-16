@@ -1,7 +1,6 @@
 import { Trash } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
 import { Counter } from '../../../../components/Counter'
-import { EnvContext } from '../../../../contexts/EnvContext'
 import { OrderContext } from '../../../../contexts/OrderContext'
 import { Coffee } from '../../../Home/components/CoffeeCard'
 import {
@@ -14,7 +13,6 @@ import {
 } from './styles'
 
 export const OrderCoffee = ({ id, name, price, amount, image }: Coffee) => {
-  const { imagesPath } = useContext(EnvContext)
   const { removeCoffeeFromCart, updateCoffeeAmountInCart } =
     useContext(OrderContext)
 
@@ -31,7 +29,7 @@ export const OrderCoffee = ({ id, name, price, amount, image }: Coffee) => {
   return (
     <OrderCoffeeContainer>
       <img
-        src={`${imagesPath}/${image}`}
+        src={`/images/coffees/${image}`}
         alt={`Foto do ${name}`}
         loading="lazy"
         title={name}

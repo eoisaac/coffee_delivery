@@ -11,7 +11,6 @@ import { ShoppingCart } from 'phosphor-react'
 import { Counter } from '../../../../components/Counter'
 import { useContext, useState } from 'react'
 import { OrderContext } from '../../../../contexts/OrderContext'
-import { EnvContext } from '../../../../contexts/EnvContext'
 import { SrOnly } from '../../../../components/Header/styles'
 
 export interface Coffee extends Omit<CoffeeItem, 'description' | 'tags'> {
@@ -26,7 +25,6 @@ export const CoffeeCard = ({
   image,
   price,
 }: CoffeeItem) => {
-  const { imagesPath } = useContext(EnvContext)
   const { addCoffeeToCart } = useContext(OrderContext)
 
   const [coffeeAmount, setCoffeeAmount] = useState(1)
@@ -43,7 +41,7 @@ export const CoffeeCard = ({
   return (
     <CoffeeContainer>
       <img
-        src={`${imagesPath}/${image}`}
+        src={`/images/coffees/${image}`}
         alt={`Foto do ${name}`}
         loading="lazy"
         title={name}

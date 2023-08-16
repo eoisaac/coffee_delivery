@@ -1,6 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { useContext } from 'react'
-import { EnvContext } from '../../contexts/EnvContext'
 import { coffeesList } from '../../data/coffees_data'
 import { CoffeeCard } from './components/CoffeeCard'
 import {
@@ -16,8 +15,6 @@ import {
 } from './styles'
 
 export const Home = () => {
-  const { imagesPath } = useContext(EnvContext)
-
   return (
     <HomeContainer>
       <IntroContainer>
@@ -63,7 +60,7 @@ export const Home = () => {
         </IntroContent>
 
         <img
-          src={`${imagesPath}/coffee_delivery_home.svg`}
+          src={`/images/coffee_delivery_home.svg`}
           alt="Copo de café branco, com a logo da Coffee Delivery. 
           No fundo, de cor amarela, contém alguns grãos de café e 
           equipamentos para preparo"

@@ -13,7 +13,7 @@ export const coffeesList: CoffeeItem[] = [
     name: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     tags: ['tradicional'],
-    image: 'coffees/coffee_expresso_tradicional.svg',
+    image: 'coffee_expresso_tradicional.svg',
     price: 8.0,
   },
   {
@@ -21,7 +21,7 @@ export const coffeesList: CoffeeItem[] = [
     name: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
     tags: ['tradicional'],
-    image: 'coffees/coffee_expresso_americano.svg',
+    image: 'coffee_expresso_americano.svg',
     price: 8.5,
   },
   {
@@ -29,7 +29,7 @@ export const coffeesList: CoffeeItem[] = [
     name: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
     tags: ['tradicional'],
-    image: 'coffees/coffee_expresso_cremoso.svg',
+    image: 'coffee_expresso_cremoso.svg',
     price: 9,
   },
   {
@@ -37,7 +37,7 @@ export const coffeesList: CoffeeItem[] = [
     name: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     tags: ['tradicional', 'gelado'],
-    image: 'coffees/coffee_expresso_gelado.svg',
+    image: 'coffee_expresso_gelado.svg',
     price: 9,
   },
   {
@@ -45,7 +45,7 @@ export const coffeesList: CoffeeItem[] = [
     name: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
     tags: ['tradicional', 'com leite'],
-    image: 'coffees/coffee_cafe_com_leite.svg',
+    image: 'coffee_cafe_com_leite.svg',
     price: 7.5,
   },
   {
@@ -54,7 +54,7 @@ export const coffeesList: CoffeeItem[] = [
     description:
       'Uma dose de café expresso com o dobro de leite e espuma cremosa',
     tags: ['tradicional', 'com leite'],
-    image: 'coffees/coffee_latte.svg',
+    image: 'coffee_latte.svg',
     price: 10.2,
   },
   {
@@ -63,7 +63,7 @@ export const coffeesList: CoffeeItem[] = [
     description:
       'Bebida com canela feita de doses iguais de café, leite e espuma',
     tags: ['tradicional', 'com leite'],
-    image: 'coffees/coffee_capuccino.svg',
+    image: 'coffee_capuccino.svg',
     price: 12,
   },
   {
@@ -72,7 +72,7 @@ export const coffeesList: CoffeeItem[] = [
     description:
       'Café expresso misturado com um pouco de leite quente e espuma',
     tags: ['tradicional', 'com leite'],
-    image: 'coffees/coffee_macchiato.svg',
+    image: 'coffee_macchiato.svg',
     price: 9.5,
   },
   {
@@ -80,7 +80,7 @@ export const coffeesList: CoffeeItem[] = [
     name: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
     tags: ['tradicional'],
-    image: 'coffees/coffee_mocaccino.svg',
+    image: 'coffee_mocaccino.svg',
     price: 12,
   },
   {
@@ -88,7 +88,7 @@ export const coffeesList: CoffeeItem[] = [
     name: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
     tags: ['tradicional', 'com leite'],
-    image: 'coffees/coffee_chocolate_quente.svg',
+    image: 'coffee_chocolate_quente.svg',
     price: 13.5,
   },
   {
@@ -97,7 +97,7 @@ export const coffeesList: CoffeeItem[] = [
     description:
       'Drink gelado de café expresso com rum, creme de leite e hortelã',
     tags: ['especial', 'alcoólico', 'gelado'],
-    image: 'coffees/coffee_cubano.svg',
+    image: 'coffee_cubano.svg',
     price: 14,
   },
   {
@@ -105,7 +105,7 @@ export const coffeesList: CoffeeItem[] = [
     name: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
     tags: ['especial'],
-    image: 'coffees/coffee_havaiano.svg',
+    image: 'coffee_havaiano.svg',
     price: 13.9,
   },
   {
@@ -113,7 +113,7 @@ export const coffeesList: CoffeeItem[] = [
     name: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
     tags: ['especial'],
-    image: 'coffees/coffee_arabe.svg',
+    image: 'coffee_arabe.svg',
     price: 14.9,
   },
   {
@@ -121,7 +121,7 @@ export const coffeesList: CoffeeItem[] = [
     name: 'Irlandês',
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
     tags: ['especial', 'alcoólico'],
-    image: 'coffees/coffee_irlandes.svg',
+    image: 'coffee_irlandes.svg',
     price: 14.9,
   },
 ]

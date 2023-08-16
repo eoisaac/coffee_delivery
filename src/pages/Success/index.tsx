@@ -1,7 +1,6 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { EnvContext } from '../../contexts/EnvContext'
 import { OrderContext } from '../../contexts/OrderContext'
 import {
   Icon,
@@ -13,7 +12,6 @@ import {
 } from './styles'
 
 export const Success = () => {
-  const { imagesPath } = useContext(EnvContext)
   const { order } = useContext(OrderContext)
   const navigate = useNavigate()
 
@@ -79,7 +77,7 @@ export const Success = () => {
         </OrderContainer>
 
         <img
-          src={`${imagesPath}/coffee_delivery_success.svg`}
+          src={`/images/coffee_delivery_success.svg`}
           alt="Homem de cabelos pretos, usando camisa amarela e 
           calça verde, pilotando uma lambreta de cor roxa"
           loading="lazy"
